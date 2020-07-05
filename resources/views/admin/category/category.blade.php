@@ -16,30 +16,39 @@
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Basic Responsive DataTable</h6>
+          <h6 class="card-body-title">Basic Responsive DataTable
+            <a href="#" style=" float: right;" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modaldemo3">Add New</a>
+          </h6>
+       
    
 
           <div class="table-wrapper">
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
+            
+                    
+         
                 <tr>
-                  <th class="wd-15p">First name</th>
-                  <th class="wd-15p">Last name</th>
-                  <th class="wd-20p">Position</th>
-                  <th class="wd-15p">Start date</th>
-                  <th class="wd-10p">Salary</th>
-                  <th class="wd-25p">E-mail</th>
+                  <th class="wd-15p">ID</th>
+                  <th class="wd-15p">Category name</th>
+                  <th class="wd-20p">Action</th>
+                 
                 </tr>
               </thead>
               <tbody>
+
+                   @foreach ($category as $row)
                 <tr>
-                  <td>Tiger</td>
-                  <td>Nixon</td>
-                  <td>System Architect</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                  <td>t.nixon@datatables.net</td>
+                  <td>{{$row->id}}</td>
+                  <td>{{$row->category_name}}</td>
+                  <td>
+                  <a href="{{url('showedit/category/'.$row->id)}}" class="btn btn-success btn-sm">Edit</a>
+                  <a href="{{url('delete/category/'.$row->id)}}" id="delete" class="btn  btn-danger btn-sm">Delete</a>   
+                 
+                  </td>
+                  
                 </tr>
+                       @endforeach
              
           
               </tbody>
@@ -48,6 +57,56 @@
         </div><!-- card -->
 
         <p class="tx-11 tx-uppercase tx-spacing-2 mg-t-40 mg-b-10 tx-gray-600">Javascript Code</p>
+
+
+
+        {{-- modal----------------------- --}}
+
+     <div id="modaldemo3" class="modal fade">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content tx-size-sm">
+              <div class="modal-header pd-x-20">
+                <h6 class="tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold">Message Preview</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body pd-20">
+                
+               {{-- validation error --}}
+                    @if ($errors->any())
+                         <div class="alert alert-danger">
+                             <ul>
+                                 @foreach ($errors->all() as $error)
+                                     <li>{{ $error }}</li>
+                                 @endforeach
+                             </ul>
+                         </div>
+                     @endif
+
+               {{-- End validation error --}}
+
+              <form action="{{route('store.category')}}" method="post">
+               @csrf
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Category</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"                         aria-describedby="emailHelp" name="category_name" placeholder="category name" >
+                          </div>
+                        
+                      
+                   
+                                      <div class="modal-footer">
+                                        <button type="submit" class="btn btn-info pd-x-20">Submit</button>
+                                        <button type="button" class="btn btn-secondary pd-x-20"                         data-dismiss="modal">Close</button>
+                                      </div>
+           </form>     
+
+            </div>
+          </div><!-- modal-dialog -->
+        </div><!-- modal -->
+
+
+        {{--End modal----------------------- --}}
       
 
        
