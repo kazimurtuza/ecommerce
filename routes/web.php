@@ -25,6 +25,7 @@ Route::get('admin/logout', 'AdminController@logout')->name('admin.logout');
 
 // admin section ...........................................................................
 
+
 // category aprt...........................
 
 Route::get('admin/categorys', 'Admin\Category\CategoryController@category')->name('categorys');  
@@ -32,3 +33,10 @@ Route::post('admin/store/category', 'Admin\Category\CategoryController@storeCate
 Route::get('delete/category/{id}', 'Admin\Category\CategoryController@DeleteCategory')->name('delete/category/');   
 Route::get('showedit/category/{id}', 'Admin\Category\CategoryController@showeditCategory');
 Route::post('update/category/{id}', 'Admin\Category\CategoryController@updateCategory');
+
+// brand....................................
+Route::get('admin/brands', 'Admin\brand\BrandController@brand')->name('brands');  
+Route::post('admin/store/brand', 'Admin\brand\BrandController@storebrand')->name('store.brand');  
+Route::get('delete/brand/{id}', 'Admin\brand\BrandController@deletebrand');
+Route::get('showedit/brand/{id}', 'Admin\brand\BrandController@ShowEditBrand');
+Route::post('update/brand/{id}', 'Admin\brand\BrandController@UpdateBrand');

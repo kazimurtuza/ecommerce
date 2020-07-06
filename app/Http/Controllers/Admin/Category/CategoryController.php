@@ -51,8 +51,7 @@ class CategoryController extends Controller
                  );
                return Redirect()->back()->with($notification);
 
-    }
-
+                }
     public function showeditCategory($id)
     {
        $data=DB::table('categories')->where('id',$id)->first();
