@@ -27,7 +27,7 @@
 
                {{-- End validation error --}}
 
-              <form action="{{url('update/category/'.$category->category_name)}}" method="post">
+              <form action="{{url('update/category/'.$category->id)}}" method="post">
                @csrf
                           <div class="form-group">
                             <label for="exampleInputEmail1">Edit Category</label>

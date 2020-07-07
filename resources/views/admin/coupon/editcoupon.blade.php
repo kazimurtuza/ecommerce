@@ -27,30 +27,24 @@
 
                {{-- End validation error --}}
 
-                        <form action="{{url('update/subcategory/'.$subcategory->id)}}" method="post">
-                          @csrf
+              <form action="{{url('update/coupon/'.$coupon->id)}}" method="post">
+               @csrf
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Edit Sub_Category</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"                         aria-describedby="emailHelp" name="subcategory_name" 
-                          placeholder="category name" value="{{$subcategory->subcategory_name}}" >
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Edit Category</label>
-                            
-                            <select name="category_id" id="" class="form-control">
-                              @foreach ($category as $row)
-                            <option value="{{$row->id}}"@if ($row->id==$subcategory->category_id)
-                              {{'selected'}}
-                             @endif >
-                            {{$row->category_name}} 
-                              @endforeach
-
-                              </option>
-                              
-                            </select>
-
+                            <label for="exampleInputEmail1">Edit Coupon_code</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"                         aria-describedby="emailHelp" name="coupon_code" 
+                          placeholder="coupon_code" value="{{$coupon->coupon_code}}" >
                           </div>
 
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Edit Discount</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"                         aria-describedby="emailHelp" name="discount" 
+                          placeholder="coupon_code" value="{{$coupon->discount}}" >
+                          </div>
+
+                        
+                        
+                      
+                   
                                       <div class="modal-footer">
                                         <button type="submit" class="btn btn-info pd-x-20">update</button>
                                       

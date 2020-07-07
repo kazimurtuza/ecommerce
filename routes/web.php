@@ -34,9 +34,24 @@ Route::get('delete/category/{id}', 'Admin\Category\CategoryController@DeleteCate
 Route::get('showedit/category/{id}', 'Admin\Category\CategoryController@showeditCategory');
 Route::post('update/category/{id}', 'Admin\Category\CategoryController@updateCategory');
 
-// brand....................................
+// brand.....................................
 Route::get('admin/brands', 'Admin\brand\BrandController@brand')->name('brands');  
 Route::post('admin/store/brand', 'Admin\brand\BrandController@storebrand')->name('store.brand');  
 Route::get('delete/brand/{id}', 'Admin\brand\BrandController@deletebrand');
 Route::get('showedit/brand/{id}', 'Admin\brand\BrandController@ShowEditBrand');
 Route::post('update/brand/{id}', 'Admin\brand\BrandController@UpdateBrand');
+
+
+//subcategory......................................
+Route::get('admin/subcaategory', 'Admin\Subcategory\SubCategoryController@subcategory')->name('subcategorys');  
+Route::post('Admin/store/sub_category', 'Admin\Subcategory\SubCategoryController@Storesubcategory')->name('store.sub_category');  
+Route::get('showedit/sub_category/{id}', 'Admin\Subcategory\SubCategoryController@ShowEditsubcategory');
+Route::post('update/subcategory/{id}', 'Admin\Subcategory\SubCategoryController@Updatesubcategory');
+Route::get('delete/subcategory/{id}', 'Admin\Subcategory\SubCategoryController@deleteSubcategory');
+
+//cupon......................................
+Route::get('admin/coupon', 'Admin\coupon\CouponController@coupon')->name('coupons');  
+Route::post('Admin/store/coupon', 'Admin\coupon\CouponController@Storecoupon')->name('store.coupon');  
+Route::get('showedit/coupon/{id}', 'Admin\coupon\CouponController@ShowEditcoupon');
+Route::post('update/coupon/{id}', 'Admin\coupon\CouponController@Updatecoupon');
+Route::get('delete/coupon/{id}', 'Admin\coupon\CouponController@deletecoupon');

@@ -3,16 +3,16 @@
 @section('admin_content')
 <!-- ########## START: MAIN PANEL ########## -->
     <div class="sl-mainpanel">
-
+ 
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
-          <h5>Sub_Category Data Table</h5>
+          <h5>Coupon Data Table</h5>
           
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
-          <h6 class="card-body-title">Sub_Category
+          <h6 class="card-body-title">Coupon DataTable
             <a href="#" style=" float: right;" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modaldemo3">Add New</a>
           </h6>
        
@@ -26,22 +26,22 @@
          
                 <tr>
                   <th class="wd-15p">ID</th>
-                  <th class="wd-15p">Category name</th>
-                  <th class="wd-15p">Sub_Category name</th>
+                  <th class="wd-15p">Coupon_Code</th>
+                  <th class="wd-15p">discount (%)</th>
                   <th class="wd-20p">Action</th>
                  
                 </tr>
               </thead>
               <tbody>
 
-                   @foreach ($data as $row)
+                   @foreach ($coupon as $row)
                 <tr>
                   <td>{{$row->id}}</td>
-                  <td>{{$row->category_name}}</td>
-                  <td>{{$row->subcategory_name}}</td>
+                  <td>{{$row->coupon_code}}</td>
+                  <td>{{$row->discount}}%</td>
                   <td>
-                  <a href="{{url('showedit/sub_category/'.$row->id)}}" class="btn btn-success btn-sm">Edit</a>
-                  <a href="{{url('delete/subcategory/'.$row->id)}}" id="delete" class="btn  btn-danger btn-sm">Delete</a>   
+                  <a href="{{url('showedit/coupon/'.$row->id)}}" class="btn btn-success btn-sm">Edit</a>
+                  <a href="{{url('delete/coupon/'.$row->id)}}" id="delete" class="btn  btn-danger btn-sm">Delete</a>   
                  
                   </td>
                   
@@ -84,20 +84,15 @@
 
                {{-- End validation error --}}
 
-              <form action="{{route('store.sub_category')}}" method="post">
+              <form action="{{route('store.coupon')}}" method="post">
                @csrf
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Sub_Category</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"                         aria-describedby="emailHelp" name="sub_category_name" placeholder="category name" >
+                            <label for="exampleInputEmail1">coupon</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"                         aria-describedby="emailHelp" name="coupon_code" placeholder="coupon code" >
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputEmail1">Category</label>
-                              <select name="category_id" id="" class="form-control" >
-                                @foreach ($category as $row)
-                              <option value="{{$row->id}}">{{$row->category_name}}</option>
-                                @endforeach
-                               
-                              </select>
+                            <label for="exampleInputEmail1">discount(%)</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"                         aria-describedby="emailHelp" name="discount" placeholder="discount" >
                           </div>
                         
                       

@@ -60,13 +60,14 @@ class CategoryController extends Controller
     }
     public function updateCategory(Request $request,$id)
     {
+        
         $validatedData = $request->validate([
         'category_name' => 'required|max:255',
           ]);
 
         $updatecategory=array();
-        $updatecategory['category_name']=$request->category_name;
-        $update=DB::table('categories')->update($updatecategory);
+        $updatecategory['category_name']=$request->category_name; 
+        $update=DB::table('categories')->where('id',$id)->update($updatecategory);
         if($update){
              $notification=array(
                 'messege'=>'category update successfully',
