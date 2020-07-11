@@ -55,3 +55,8 @@ Route::post('Admin/store/coupon', 'Admin\coupon\CouponController@Storecoupon')->
 Route::get('showedit/coupon/{id}', 'Admin\coupon\CouponController@ShowEditcoupon');
 Route::post('update/coupon/{id}', 'Admin\coupon\CouponController@Updatecoupon');
 Route::get('delete/coupon/{id}', 'Admin\coupon\CouponController@deletecoupon');
+
+// newsletter.............
+Route::post('store/newslater','NewslaterController@storenewslater')->name('store.newslater');
+Route::get('admin/newslater', 'NewslaterController@newslater')->name('newslater');  
+Route::get('delete/newslater/{id}', 'NewslaterController@Deletenewslater');
