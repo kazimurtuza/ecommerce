@@ -60,3 +60,10 @@ Route::get('delete/coupon/{id}', 'Admin\coupon\CouponController@deletecoupon');
 Route::post('store/newslater','NewslaterController@storenewslater')->name('store.newslater');
 Route::get('admin/newslater', 'NewslaterController@newslater')->name('newslater');  
 Route::get('delete/newslater/{id}', 'NewslaterController@Deletenewslater');
+
+// product..............
+
+Route::get('admin/add/product','Admin\product\ProductController@addproduct')->name('add.product');
+Route::post('admin/store/product','Admin\product\ProductController@storeproduct')->name('store.product');
+Route::get('admin/all/product','Admin\product\ProductController@allproduct')->name('all.product');
+Route::get('subcategorylistshow','Admin\product\ProductController@subcategorylistshow')->name('subcategorylistshow');
