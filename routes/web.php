@@ -67,3 +67,11 @@ Route::get('admin/add/product','Admin\product\ProductController@addproduct')->na
 Route::post('admin/store/product','Admin\product\ProductController@storeproduct')->name('store.product');
 Route::get('admin/all/product','Admin\product\ProductController@allproduct')->name('all.product');
 Route::get('subcategorylistshow','Admin\product\ProductController@subcategorylistshow')->name('subcategorylistshow');
+
+// product active inactive...............
+Route::get('inactive/product/{id}','Admin\product\ProductController@productInactive');
+Route::get('active/product/{id}','Admin\product\ProductController@productActive');
+Route::get('delete/product/{id}','Admin\product\ProductController@deleteproduct');
+Route::get('details/product/{id}','Admin\product\ProductController@details');
+Route::get('Edit/product/{id}','Admin\product\ProductController@Editproduct');
+Route::post('update/product/{id}','Admin\product\ProductController@updateproduct');

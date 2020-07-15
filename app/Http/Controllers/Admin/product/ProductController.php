@@ -24,7 +24,10 @@ class ProductController extends Controller
     }
     public function allproduct()
     {
-        return 'done';
+       $allproduct=DB::table('products')->join('categories','categories.id','=','products.category_id')
+       ->join('brands','brands.id','=','products.brand_id')->select('products.*','categories.category_name','brands.brand_name')->get();
+       return view('Admin/product/allproduct',['product'=>$allproduct]);
+  
     }
     public function subcategorylistshow(Request $request)
     {
@@ -99,6 +102,102 @@ class ProductController extends Controller
                     );
                 return Redirect()->back()->with($notification);   
         }
+
+    }
+
+    public function productInactive($id)
+    {
+       DB::table('products')->where('id',$id)->update(['status'=>0]);
+         $notification=array(
+                     'messege'=>'Successfully Product Active ',
+                     'alert-type'=>'success'
+                    );
+                      return Redirect()->back()->with($notification);   
+    }
+    public function productActive($id)
+    {
+         DB::table('products')->where('id',$id)->update(['status'=>1]);
+         $notification=array(
+                     'messege'=>'Successfully Product Inactive ',
+                     'alert-type'=>'success'
+                    );
+                      return Redirect()->back()->with($notification);   
+    }
+    public function deleteproduct($id)
+    {
+
+        $data= DB::table('products')->where('id',$id)->first();
+         unlink($data->image_one);
+         unlink($data->image_two);
+         unlink($data->image_three);
+         DB::table('products')->where('id',$id)->delete();
+         $notification=array(
+                     'messege'=>' Product deleted ',
+                     'alert-type'=>'success'
+                    );
+                      return Redirect()->back()->with($notification);   
+    }
+
+    public function details($id)
+    {
+          $details=DB::table('products')->join('categories','categories.id','=','products.category_id')
+       ->join('brands','brands.id','=','products.brand_id')->select('products.*','categories.category_name','brands.brand_name','subcategories.subcategory_name') ->join('subcategories','subcategories.id','=','products.subcategory_id')->where([['products.id','=',$id]])->first();
+    return view('Admin/product/productdetails',['details'=>$details]);
+  
+
+    }
+
+    public function Editproduct($id)
+    {
+          $details=DB::table('products')->join('categories','categories.id','=','products.category_id')
+       ->join('brands','brands.id','=','products.brand_id')->select('products.*','categories.category_name','brands.brand_name','subcategories.subcategory_name') ->join('subcategories','subcategories.id','=','products.subcategory_id')->where([['products.id','=',$id]])->first();
+       $data=DB::table('subcategories')->join('categories','subcategories.category_id','=','categories.id')->get();
+       $brand=DB::table('brands')->get();
+        return view('Admin/product/Editproduct',['details'=>$details,'data'=>$data,'brand'=>$brand]);
+
+
+    }
+    public function updateproduct(Request $request,$id)
+    {
+              $product=array();
+        $product['category_id']=$request->category_id;
+        $product['subcategory_id']=$request->subcategory_id;
+        $product['brand_id']=$request->brand_id;
+        $product['product_name']=$request->product_name;
+        $product['product_code']=$request->product_code;
+        $product['product_quantity']=$request->product_quantity;
+        $product['product_details']=$request->product_details;
+        $product['product_colour']=$request->product_colour;
+        $product['product_size']=$request->product_size;
+        $product['selling_price']=$request->product_price;
+        $product['video_link']=$request->video_link;
+        $product['main_slider']=$request->main_slider; 
+        $product['hot_deal']=$request->hot_deal;
+        $product['best_rated']=$request->best_rated;
+        $product['mid_slider']=$request->mid_slider; 
+        $product['hot_new']=$request->hot_new;
+        $product['trend']=$request->trend;
+        $product['status']=1;
+        $update=DB::table('products')->where('id',$id)->update($product);
+        if($update)
+        {
+              $notification=array(
+                     'messege'=>' Product update successfully ',
+                     'alert-type'=>'success'
+                    );
+                      return Redirect()->route('all.product')->with($notification);  
+
+        }
+        else
+        {
+             $notification=array(
+                     'messege'=>'nothing to  update ',
+                     'alert-type'=>'info'
+                    );
+                      return Redirect()->route('all.product')->with($notification);  
+
+        }
+        
 
     }
 }
