@@ -84,6 +84,9 @@
 					</div>
 
 					<!-- Search -->
+					@php
+						$cate=DB::table('categories')->get();
+					@endphp
 					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
 						<div class="header_search">
 							<div class="header_search_content">
@@ -95,12 +98,11 @@
 												<span class="custom_dropdown_placeholder clc">All Categories</span>
 												<i class="fas fa-chevron-down"></i>
 												<ul class="custom_list clc">
-													<li><a class="clc" href="#">All Categories</a></li>
-													<li><a class="clc" href="#">Computers</a></li>
-													<li><a class="clc" href="#">Laptops</a></li>
-													<li><a class="clc" href="#">Cameras</a></li>
-													<li><a class="clc" href="#">Hardware</a></li>
-													<li><a class="clc" href="#">Smartphones</a></li>
+													@foreach ($cate as $item)
+												<li><a class="clc" href="#">{{$item->category_name}}</a></li>
+													@endforeach
+												
+										
 												</ul>
 											</div>
 										</div>

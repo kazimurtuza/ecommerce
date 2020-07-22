@@ -127,9 +127,13 @@ class ProductController extends Controller
     {
 
         $data= DB::table('products')->where('id',$id)->first();
+           if($data->image_one && $data->image_two && $data->image_three)
+         {
          unlink($data->image_one);
          unlink($data->image_two);
          unlink($data->image_three);
+
+         }
          DB::table('products')->where('id',$id)->delete();
          $notification=array(
                      'messege'=>' Product deleted ',
@@ -177,6 +181,7 @@ class ProductController extends Controller
         $product['mid_slider']=$request->mid_slider; 
         $product['hot_new']=$request->hot_new;
         $product['trend']=$request->trend;
+        $product['discount_price']=$request->discount_price;
         $product['status']=1;
         $update=DB::table('products')->where('id',$id)->update($product);
         if($update)
@@ -198,6 +203,157 @@ class ProductController extends Controller
 
         }
         
+
+    }
+
+    public function updateproductImage(Request $request)
+    {
+         $image_one=$request->image_one;
+    	$image_two=$request->image_two;
+    	$image_three=$request->image_three;
+
+        if($request->image_one &&$request->image_two && $request->image_three)
+        {
+            unlink($request->old_one);
+            unlink($request->old_two);
+            unlink($request->old_three);
+             $image_one_name= hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
+                Image::make($image_one)->resize(230,300)->save('public/media/product/'.$image_one_name);
+                $product['image_one']='public/media/product/'.$image_one_name;
+
+            $image_two_name= hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
+                Image::make($image_two)->resize(230,300)->save('public/media/product/'.$image_two_name);
+                $product['image_two']='public/media/product/'.$image_two_name; 
+
+            $image_three_name= hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
+                Image::make($image_three)->resize(230,300)->save('public/media/product/'.$image_three_name);
+                $product['image_three']='public/media/product/'.$image_three_name; 
+                
+                $product=DB::table('products')
+                          ->update($product);
+                    $notification=array(
+                     'messege'=>'Successfully upload Product image 1,2,3 ',
+                     'alert-type'=>'success'
+                    );
+                return Redirect()->back()->with($notification);   
+        }
+        else if($request->image_two &&$request->image_three)
+        {
+            unlink($request->old_two);
+            unlink($request->old_three);
+            $image_two_name= hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
+                Image::make($image_two)->resize(230,300)->save('public/media/product/'.$image_two_name);
+                $product['image_two']='public/media/product/'.$image_two_name; 
+
+            $image_three_name= hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
+                Image::make($image_three)->resize(230,300)->save('public/media/product/'.$image_three_name);
+                $product['image_three']='public/media/product/'.$image_three_name; 
+                
+                $product=DB::table('products')
+                          ->update($product);
+                    $notification=array(
+                     'messege'=>'Successfully upload Product image 2,3 ',
+                     'alert-type'=>'success'
+                    );
+        }
+        else if($request->image_one &&$request->image_three)
+        {
+            unlink($request->old_one);
+            unlink($request->old_three);
+
+              $image_one_name= hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
+                Image::make($image_one)->resize(230,300)->save('public/media/product/'.$image_one_name);
+                $product['image_one']='public/media/product/'.$image_one_name;
+
+            $image_three_name= hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
+                Image::make($image_three)->resize(230,300)->save('public/media/product/'.$image_three_name);
+                $product['image_three']='public/media/product/'.$image_three_name; 
+                
+                $product=DB::table('products')
+                          ->update($product);
+                    $notification=array(
+                     'messege'=>'Successfully upload Product image 1,3 ',
+                     'alert-type'=>'success'
+                    );
+                return Redirect()->back()->with($notification);   
+            
+        }
+        else if($request->image_one &&$request->image_two)
+        {
+           unlink($request->old_one);
+            unlink($request->old_two);
+
+              $image_one_name= hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
+                Image::make($image_one)->resize(230,300)->save('public/media/product/'.$image_one_name);
+                $product['image_one']='public/media/product/'.$image_one_name;
+
+            $image_two_name= hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
+                Image::make($image_two)->resize(230,300)->save('public/media/product/'.$image_two_name);
+                $product['image_two']='public/media/product/'.$image_two_name; 
+
+
+                
+                $product=DB::table('products')
+                          ->update($product);
+                    $notification=array(
+                     'messege'=>'Successfully upload Product image 1,2 ',
+                     'alert-type'=>'success'
+                    );
+                return Redirect()->back()->with($notification);   
+        }
+        else if($request->image_one &&$request->image_two==null && $request->image_three==null )
+        {
+           unlink($request->old_one);
+             $image_one_name= hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
+                Image::make($image_one)->resize(230,300)->save('public/media/product/'.$image_one_name);
+                $product['image_one']='public/media/product/'.$image_one_name;
+
+                
+                $product=DB::table('products')
+                          ->update($product);
+                    $notification=array(
+                     'messege'=>'Successfully upload Product image 1 ',
+                     'alert-type'=>'success'
+                    );
+                return Redirect()->back()->with($notification);   
+          
+        }
+    
+        else if($request->image_two &&$request->image_one==null && $request->image_three==null )
+        {
+            unlink($request->old_two);
+
+            $image_two_name= hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
+                Image::make($image_two)->resize(230,300)->save('public/media/product/'.$image_two_name);
+                $product['image_two']='public/media/product/'.$image_two_name; 
+               
+                $product=DB::table('products')
+                          ->update($product);
+                    $notification=array(
+                     'messege'=>'Successfully upload Product image 2 ',
+                     'alert-type'=>'success'
+                    );
+                return Redirect()->back()->with($notification);   
+          
+        }
+    
+        else if($request->image_three &&$request->image_two==null && $request->image_one==null )
+        {
+            unlink($request->old_three);
+          
+            $image_three_name= hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
+                Image::make($image_three)->resize(230,300)->save('public/media/product/'.$image_three_name);
+                $product['image_three']='public/media/product/'.$image_three_name; 
+                
+                $product=DB::table('products')
+                          ->update($product);
+                    $notification=array(
+                     'messege'=>'Successfully upload Product image 3 ',
+                     'alert-type'=>'success'
+                    );
+                return Redirect()->back()->with($notification);   
+        }
+    
 
     }
 }

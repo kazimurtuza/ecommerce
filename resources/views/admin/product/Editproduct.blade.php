@@ -39,6 +39,12 @@
                   <input class="form-control" type="text" value="{{$details->product_quantity}}" name="product_quantity" placeholder="Enter Quantity">
                 </div>
               </div><!-- col-4 -->   
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label">discount_price: <span class="tx-danger">*</span></label>
+                  <input class="form-control" type="text" value="" name="discount_price" placeholder="Enter discount">
+                </div>
+              </div><!-- col-4 -->   
               
            
               <div class="col-lg-4">
@@ -200,12 +206,13 @@
 
 
                <br> <br> <hr><hr> <h6>Image update</h6>
-  <form action="" method="post" class=" bg-success-light  p-5" enctype="multipart/form-data">
+<form action="{{route('product/image/update')}}" method="post" class=" bg-success-light  p-5" enctype="multipart/form-data">
     @csrf
     <div class="col-lg-10">
               	<lebel>Image One <span class="tx-danger">*</span></lebel>
               	<label class="custom-file">
-      				  <input type="file" id="file" class="custom-file-input" name="image_one" onchange="readURL(this);" required="" accept="image">
+      				  <input type="file" id="file" class="custom-file-input" name="image_one" onchange="readURL(this);"  accept="image">
+      				  <input type="hidden" id="file" class="custom-file-input" name="old_one" value="{{$details->image_one}}">
       				  <span class="custom-file-control"></span>
       				  
               </label>
@@ -218,7 +225,8 @@
                <div class="col-lg-10">
               	<lebel>Image two <span class="tx-danger">*</span></lebel>
               	<label class="custom-file">
-      				  <input type="file" id="file" class="custom-file-input" name="image_two" onchange="readURL2(this);" required="" accept="image">
+                <input type="file" id="file" class="custom-file-input" name="image_two" onchange="readURL2(this);" accept="image">
+                 <input type="hidden" id="file"name="old_two" value="{{$details->image_two}}">
       				  <span class="custom-file-control"></span>
               </label>
             <img style="margin-left:20px" src="" id="two" >
@@ -230,7 +238,8 @@
               <div class="col-lg-10">
               	<lebel>Image Three <span class="tx-danger">*</span></lebel>
               	<label class="custom-file">
-      				  <input type="file" id="file"class="custom-file-input" name="image_three" onchange="readURL3(this);" required="" accept="image">
+                <input type="file" id="file"class="custom-file-input" name="image_three" onchange="readURL3(this);" accept="image">
+                  <input type="hidden" id="file"name="old_three" value="{{$details->image_three}}">
       				  <span class="custom-file-control"></span>
       				 
               </label>
@@ -239,7 +248,7 @@
                <label for="" class=" bg-light p-2"  style="float:right;border-radius:20px" >old</label>
               </div>
               <br><br><hr>
-              <button class="btn btn-warning mg-r-5">Add product</button>
+              <button type="submit" class="btn btn-warning mg-r-5">Add product</button>
 
               </form>
 

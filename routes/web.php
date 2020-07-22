@@ -75,3 +75,17 @@ Route::get('delete/product/{id}','Admin\product\ProductController@deleteproduct'
 Route::get('details/product/{id}','Admin\product\ProductController@details');
 Route::get('Edit/product/{id}','Admin\product\ProductController@Editproduct');
 Route::post('update/product/{id}','Admin\product\ProductController@updateproduct');
+Route::post('product/image/update','Admin\product\ProductController@updateproductImage')->name('product/image/update');
+
+
+// blogs post
+Route::get('blog/category','PostController@blogCategory')->name('blog.category');
+Route::post('store/blog/category','PostController@storeCategory')->name('store.blogs_category');
+Route::get('delete/blog/category/{id}','PostController@deleteCategory');
+Route::post('update/blog/category','PostController@updateCategory')->name('update.blogs_category');
+Route::get('blog/post','PostController@blogPost')->name('blog.post');
+Route::post('blog/post/add','PostController@blogPostadd')->name('blog.post.add');
+Route::get('blog/allpost','PostController@blogAllpost')->name('blog.allpost');
+Route::get('Edit/post/{id}','PostController@Editpost');
+Route::get('delete/post/{id}','PostController@deletepost'); 
+Route::post('update/blog/post/{id}','PostController@updatepost'); 

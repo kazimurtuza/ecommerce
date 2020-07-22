@@ -39,6 +39,12 @@
                  <strong>{{$details->product_quantity}}</strong>
                 </div>
               </div><!-- col-4 -->   
+               <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="form-control-label">discount_price: <span class="tx-danger">*</span></label>
+                <strong>{{$details->discount_price}}</strong>
+                </div>
+              </div><!-- col-4 --> 
               
            
               <div class="col-lg-4">

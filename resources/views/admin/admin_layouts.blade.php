@@ -103,6 +103,19 @@
         <li class="nav-item"><a href="{{route('add.product')}}" class="nav-link">add product</a></li>
           <li class="nav-item"><a href="{{route('all.product')}}" class="nav-link">all product</a></li>
         </ul>
+                <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="fa fa-th-large" aria-hidden="true"></i>
+            <span class="menu-item-label">blogs</span> 
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+          <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{route('blog.category')}}" class="nav-link">Category</a></li>
+          <li class="nav-item"><a href="{{route('blog.post')}}" class="nav-link">Post</a></li>
+          <li class="nav-item"><a href="{{route('blog.allpost')}}" class="nav-link">All Post</a></li>
+        </ul>
+                
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-navigate-outline tx-24"></i>
