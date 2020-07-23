@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/plugins/slick-1.8.0/slick.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/responsive.css')}}">
+
     {{-- toastr --}}
      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
      {{-- end toastr --}}
@@ -79,7 +80,7 @@
 					<!-- Logo -->
 					<div class="col-lg-2 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="{{url('/')}}">Ecommerce</a></div>
+							<div class="logo"><a href="{{url('/')}}">kazi'Shop</a></div>
 						</div>
 					</div>
 

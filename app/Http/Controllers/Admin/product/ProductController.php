@@ -206,7 +206,7 @@ class ProductController extends Controller
 
     }
 
-    public function updateproductImage(Request $request)
+    public function updateproductImage(Request $request,$id)
     {
          $image_one=$request->image_one;
     	$image_two=$request->image_two;
@@ -229,13 +229,13 @@ class ProductController extends Controller
                 Image::make($image_three)->resize(230,300)->save('public/media/product/'.$image_three_name);
                 $product['image_three']='public/media/product/'.$image_three_name; 
                 
-                $product=DB::table('products')
+                $product=DB::table('products')->where('id',$id)
                           ->update($product);
                     $notification=array(
                      'messege'=>'Successfully upload Product image 1,2,3 ',
                      'alert-type'=>'success'
                     );
-                return Redirect()->back()->with($notification);   
+                return Redirect()->route('all.product')->with($notification);   
         }
         else if($request->image_two &&$request->image_three)
         {
@@ -249,12 +249,13 @@ class ProductController extends Controller
                 Image::make($image_three)->resize(230,300)->save('public/media/product/'.$image_three_name);
                 $product['image_three']='public/media/product/'.$image_three_name; 
                 
-                $product=DB::table('products')
+                $product=DB::table('products')->where('id',$id)
                           ->update($product);
                     $notification=array(
                      'messege'=>'Successfully upload Product image 2,3 ',
                      'alert-type'=>'success'
                     );
+                     return Redirect()->route('all.product')->with($notification);   
         }
         else if($request->image_one &&$request->image_three)
         {
@@ -269,13 +270,13 @@ class ProductController extends Controller
                 Image::make($image_three)->resize(230,300)->save('public/media/product/'.$image_three_name);
                 $product['image_three']='public/media/product/'.$image_three_name; 
                 
-                $product=DB::table('products')
+                $product=DB::table('products')->where('id',$id)
                           ->update($product);
                     $notification=array(
                      'messege'=>'Successfully upload Product image 1,3 ',
                      'alert-type'=>'success'
                     );
-                return Redirect()->back()->with($notification);   
+                 return Redirect()->route('all.product')->with($notification);   
             
         }
         else if($request->image_one &&$request->image_two)
@@ -293,13 +294,13 @@ class ProductController extends Controller
 
 
                 
-                $product=DB::table('products')
+                $product=DB::table('products')->where('id',$id)
                           ->update($product);
                     $notification=array(
                      'messege'=>'Successfully upload Product image 1,2 ',
                      'alert-type'=>'success'
                     );
-                return Redirect()->back()->with($notification);   
+                 return Redirect()->route('all.product')->with($notification);     
         }
         else if($request->image_one &&$request->image_two==null && $request->image_three==null )
         {
@@ -309,13 +310,13 @@ class ProductController extends Controller
                 $product['image_one']='public/media/product/'.$image_one_name;
 
                 
-                $product=DB::table('products')
+                $product=DB::table('products')->where('id',$id)
                           ->update($product);
                     $notification=array(
                      'messege'=>'Successfully upload Product image 1 ',
                      'alert-type'=>'success'
                     );
-                return Redirect()->back()->with($notification);   
+                    return Redirect()->route('all.product')->with($notification);  
           
         }
     
@@ -327,13 +328,13 @@ class ProductController extends Controller
                 Image::make($image_two)->resize(230,300)->save('public/media/product/'.$image_two_name);
                 $product['image_two']='public/media/product/'.$image_two_name; 
                
-                $product=DB::table('products')
+                $product=DB::table('products')->where('id',$id)
                           ->update($product);
                     $notification=array(
                      'messege'=>'Successfully upload Product image 2 ',
                      'alert-type'=>'success'
                     );
-                return Redirect()->back()->with($notification);   
+                return Redirect()->route('all.product')->with($notification);  
           
         }
     
@@ -345,13 +346,13 @@ class ProductController extends Controller
                 Image::make($image_three)->resize(230,300)->save('public/media/product/'.$image_three_name);
                 $product['image_three']='public/media/product/'.$image_three_name; 
                 
-                $product=DB::table('products')
+                $product=DB::table('products')->where('id',$id)
                           ->update($product);
                     $notification=array(
                      'messege'=>'Successfully upload Product image 3 ',
                      'alert-type'=>'success'
                     );
-                return Redirect()->back()->with($notification);   
+                return Redirect()->route('all.product')->with($notification);    
         }
     
 

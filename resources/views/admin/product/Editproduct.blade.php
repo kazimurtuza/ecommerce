@@ -42,7 +42,7 @@
               <div class="col-lg-4">
                 <div class="form-group">
                   <label class="form-control-label">discount_price: <span class="tx-danger">*</span></label>
-                  <input class="form-control" type="text" value="" name="discount_price" placeholder="Enter discount">
+                <input class="form-control" type="text" value="{{$details->discount_price}}" name="discount_price" placeholder="Enter discount">
                 </div>
               </div><!-- col-4 -->   
               
@@ -206,7 +206,7 @@
 
 
                <br> <br> <hr><hr> <h6>Image update</h6>
-<form action="{{route('product/image/update')}}" method="post" class=" bg-success-light  p-5" enctype="multipart/form-data">
+<form action="{{url('product/image/update/'.$details->id)}}" method="post" class=" bg-success-light  p-5" enctype="multipart/form-data">
     @csrf
     <div class="col-lg-10">
               	<lebel>Image One <span class="tx-danger">*</span></lebel>

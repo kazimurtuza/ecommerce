@@ -4,8 +4,8 @@
         <div class="wrapper without_header_sidebar">
             <!-- contnet wrapper -->
             <div class="content_wrapper">
-                    <!-- page content -->
-                    <div class="login_page center_container">
+                    <!-- page content -->  
+                    <div class="login_page center_container">   
                         <div class="center_content">
                             <div class="logo">
                                 <img src="{{asset('public/panel/assets/images/logo.png')}}" alt="" class="img-fluid">

@@ -75,7 +75,7 @@ Route::get('delete/product/{id}','Admin\product\ProductController@deleteproduct'
 Route::get('details/product/{id}','Admin\product\ProductController@details');
 Route::get('Edit/product/{id}','Admin\product\ProductController@Editproduct');
 Route::post('update/product/{id}','Admin\product\ProductController@updateproduct');
-Route::post('product/image/update','Admin\product\ProductController@updateproductImage')->name('product/image/update');
+Route::post('product/image/update/{id}','Admin\product\ProductController@updateproductImage');
 
 
 // blogs post

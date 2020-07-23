@@ -216,7 +216,15 @@
 				<div class="col-lg-5 offset-lg-4 fill_height">
 					<div class="banner_content">
 					<h1 class="banner_text">{{$mainslide->product_name}}</h1>
-						<div class="banner_price"><span>$530</span>{{$mainslide->selling_price}} Tk</div>
+						<div class="banner_price">
+							@if ($mainslide->discount_price !==null)
+						<span>{{$mainslide->selling_price }}Tk</span>{{$mainslide->discount_price}} Tk
+						@else
+								{{$mainslide->selling_price}} Tk
+							@endif
+							
+						
+						</div>
 					<div class="banner_product_name">{{$mainslide->brand_name}}</div>
 						<div class="button banner_button"><a href="#">Shop Now</a></div>
 					</div>

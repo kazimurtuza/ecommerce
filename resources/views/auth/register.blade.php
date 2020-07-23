@@ -1,138 +1,72 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/contact_styles.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/contact_responsive.css')}}">
+<div class="container">
+    <div class="row">
+        <div class=" col-lg-5 offset-lg-1 p-4" style=" border:solid 2px rgb(158, 156, 156)">
+            <div class="contact_form_container">
+						<div class="contact_form_title">Sign Up</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
-        <div class="wrapper without_header_sidebar">
-            <!-- contnet wrapper -->
-            <div class="content_wrapper">
-                <!-- page content -->
-                <div class="registration_page center_container">
-                    <div class="center_content">
-                        <div class="logo">
-                            <img src="{{asset('public/panel/assets/images/logo.png')}}" alt="" class="img-fluid">
-                        </div>
-                        <form action="{{route('register')}}" method="post">
-                            @csrf
-                            <div class="form-group icon_parent">
-                                <label for="uname">Username</label>
-                               <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Full Name">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <span class="icon_soon_bottom_right"><i class="fas fa-user"></i></span>
-                            </div>
-                            <div class="form-group icon_parent">
-                                <label for="email">E-mail</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <span class="icon_soon_bottom_right"><i class="fas fa-envelope"></i></span>
-                            </div>
-                            <div class="form-group icon_parent">
-                                <label for="password">Password</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                                <span class="icon_soon_bottom_right"><i class="fas fa-unlock"></i></span>
-                            </div>
-                            <div class="form-group icon_parent">
-                                <label for="rtpassword">Re-type Password</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
-                                <span class="icon_soon_bottom_right"><i class="fas fa-unlock"></i></span>
-                            </div>
-                            <div class="form-group">
-                                <a class="registration" href="{{route('login')}}">Already have an account</a><br>
-                                <button type="submit" class="btn btn-blue">Signup</button>
-                            </div>
+						<form action="#" id="contact_form">
+						
+								 <div class="form-group">
+                                         <label for="exampleFormControlInput1">Email or phone</label>
+                                         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                 </div>
+								 <div class="form-group">
+                                         <label for="exampleFormControlInput1">password</label>
+                                         <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                 </div>
+							
+						
+							<div class="contact_form_button">
+								<button type="submit" class="btn btn-info">login</button>
+							</div>
                         </form>
-                        <div class="footer">
-                            <p>Copyright &copy; 2019 <a href="https://durbarit.com/">Durbar IT</a>. All rights reserved.</p>
-                        </div>
+                        <br><br>
+                        <button type="submit" class="btn btn-primary btn-block"> Login with faceBook</button><br> 
+                        <button type="submit" class="btn btn-danger btn-block"> Login with Email</button>
+
                     </div>
-                </div>
-            </div><!--/ content wrapper -->
-        </div><!--/ wrapper -->
+
+        </div>
+        <div class=" col-lg-5 offset-lg-1 p-4" style=" border:solid 2px rgb(158, 156, 156)">
+               <div class="contact_form_container">
+						<div class="contact_form_title">Sign Up</div>
+
+						<form action="#" id="contact_form">
+						
+								 <div class="form-group">
+                                         <label for="exampleFormControlInput1">Email</label>
+                                         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email">
+                                 </div>
+								 <div class="form-group">
+                                         <label for="exampleFormControlInput1">Phone</label>
+                                         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="phone ">
+                                 </div>
+								 <div class="form-group">
+                                         <label for="exampleFormControlInput1">password</label>
+                                         <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
+                                 </div>
+								 <div class="form-group">
+                                         <label for="exampleFormControlInput1">Confirm Password</label>
+                                         <input type="password" class="form-control" id="exampleFormControlInput1" 
+                                         placeholder="Re-type password">
+                                 </div>
+							
+						
+							<div class="contact_form_button">
+								<button type="submit" class="btn btn-info">login</button>
+							</div>
+						</form>
+
+                    </div>
+        </div>
+
+    </div>
+
+     		
+                    </div>
 @endsection
