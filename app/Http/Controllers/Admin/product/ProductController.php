@@ -55,6 +55,7 @@ class ProductController extends Controller
         $product['hot_deal']=$request->hot_deal;
         $product['best_rated']=$request->best_rated;
         $product['mid_slider']=$request->mid_slider; 
+        $product['buyone_getone']=$request->buyone_getone;
         $product['hot_new']=$request->hot_new;
         $product['trend']=$request->trend;
         $product['status']=1;
@@ -180,6 +181,7 @@ class ProductController extends Controller
         $product['best_rated']=$request->best_rated;
         $product['mid_slider']=$request->mid_slider; 
         $product['hot_new']=$request->hot_new;
+        $product['buyone_getone']=$request->buyone_getone;
         $product['trend']=$request->trend;
         $product['discount_price']=$request->discount_price;
         $product['status']=1;

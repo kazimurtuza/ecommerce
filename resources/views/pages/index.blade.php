@@ -188,7 +188,9 @@
 													</div>
 											
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+										<button class="wishlist" data-id="{{$item->id}}"><div class="product_fav"><i class="fas fa-heart"></i></div></button>
+										{{-- <a href="{{url('wishlist/'.$item->id)}}"><div class="product_fav"><i class="fas fa-heart"></i></div></a> --}}
+											
 											<ul class="product_marks">
 													@if ($item->discount_price !== null)
 														@php
@@ -246,7 +248,7 @@
 													</div>
 											
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+										<button class="wishlist" data-id="{{$item->id}}"><div class="product_fav"><i class="fas fa-heart"></i></div></button>
 											<ul class="product_marks">
 													@if ($item->discount_price !== null)
 														@php
@@ -297,7 +299,7 @@
 													</div>
 											
 											</div>
-											<div class="product_fav"><i class="fas fa-heart"></i></div>
+												<button class="wishlist" data-id="{{$item->id}}"><div class="product_fav"><i class="fas fa-heart"></i></div></button>
 											<ul class="product_marks">
 													@if ($item->discount_price !== null)
 														@php
@@ -2918,4 +2920,35 @@
 			</div>
 		</div>
 	</div>
+
+  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$('.wishlist').on('click',function(){
+			$id=$(this).data('id');
+			$.get('{{route('wishlist')}}',{id:$id},function(data){
+                   
+				    const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000
+                        })
+					
+						    if(data.success){
+                            Toast.fire({
+                              type: 'success',
+                              title: data.success
+                            })
+                       }else{
+                             Toast.fire({
+                                type: 'error',
+                                title: data.error
+                            })
+                       }
+					
+ 
+     		})
+			
+	})
+	</script>
 @endsection

@@ -4,7 +4,7 @@
 
 Route::get('/', function () {return view('pages.index');});
 //auth & user
-Auth::routes();
+Auth::routes(['verify' => true]); 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/password-change', 'HomeController@changePassword')->name('password.change');
 Route::post('/password-update', 'HomeController@updatePassword')->name('password.update');
@@ -89,3 +89,6 @@ Route::get('blog/allpost','PostController@blogAllpost')->name('blog.allpost');
 Route::get('Edit/post/{id}','PostController@Editpost');
 Route::get('delete/post/{id}','PostController@deletepost'); 
 Route::post('update/blog/post/{id}','PostController@updatepost'); 
+
+//wishlist add
+Route::get('wishlist','Admin\wishlist\WishlistController@wishadd')->name('wishlist');

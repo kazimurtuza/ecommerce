@@ -160,6 +160,12 @@
             	</div>
             	<div class="col-lg-4">
             		<label class="ckbox">
+					  <input type="checkbox" name="buyone_getone" value="1">
+					  <span>buyone_getone</span>
+					</label>
+            	</div>
+            	<div class="col-lg-4">
+            		<label class="ckbox">
 					  <input type="checkbox" name="hot_deal" value="1">
 					  <span>Hot Deal</span>
 					</label>

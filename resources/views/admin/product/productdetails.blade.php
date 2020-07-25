@@ -208,6 +208,17 @@
       					  <span>Hot New</span>
       					</label>
             	</div>
+            	<div class="col-lg-4">
+            		<label >
+      					  @if ($details->buyone_getone==1)
+                    <span class=" badge btn-primary">active</span>
+                    @else
+                    <span class=" badge btn-danger">inactive</span>
+
+                        @endif
+      					  <span>buyone_getone</span>
+      					</label>
+            	</div>
 
 
             </div>

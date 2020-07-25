@@ -72,7 +72,7 @@ class HomeController extends Controller
                 'messege'=>'Successfully Logout',
                 'alert-type'=>'success'
                  );
-             return Redirect()->route('login')->with($notification);
+             return Redirect()->to('/')->with($notification);
        
 
     }

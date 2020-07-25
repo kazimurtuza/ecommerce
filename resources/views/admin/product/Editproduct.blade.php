@@ -149,6 +149,14 @@
             	</div>
             	<div class="col-lg-4">
             		<label class="ckbox">
+					  <input type="checkbox" name="buyone_getone" value="1" @if ($details->buyone_getone)
+                           checked 
+                      @endif>
+					  <span>buyone_getone</span>
+					</label>
+            	</div>
+            	<div class="col-lg-4">
+            		<label class="ckbox">
 					  <input type="checkbox" name="hot_deal" value="1" @if ($details->hot_deal)
                            checked 
                       @endif>
