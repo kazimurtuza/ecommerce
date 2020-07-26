@@ -184,7 +184,7 @@
 												@endif
 												<div class="product_name"><div><a href="">{{$item->product_name}}</a></div></div>
 														<div class="product_extras">
-														<button class="product_cart_button">Add to Cart</button>
+														<button class="product_cart_button addtocard" data-id="{{$item->id}}">Add to Cart</button>
 													</div>
 											
 											</div>
@@ -2949,6 +2949,33 @@
  
      		})
 			
+	})
+
+	$('.addtocard').on('click',function(){
+		$id=$(this).data('id');
+		$.get('{{route('addcart')}}',{id:$id},function(data){
+			  const Toast = Swal.mixin({
+                          toast: true,
+                          position: 'top-end',
+                          showConfirmButton: false,
+                          timer: 3000
+                        })
+					
+						    if(data.success){
+                            Toast.fire({
+                              type: 'success',
+                              title: data.success
+                            })
+                       }else{
+                             Toast.fire({
+                                type: 'error',
+                                title: data.error
+                            })
+                       }
+					
+
+		})
+		
 	})
 	</script>
 @endsection

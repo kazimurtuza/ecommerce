@@ -92,3 +92,6 @@ Route::post('update/blog/post/{id}','PostController@updatepost');
 
 //wishlist add
 Route::get('wishlist','Admin\wishlist\WishlistController@wishadd')->name('wishlist');
+//addcard add
+ Route::get('addcart','CartController@addcart')->name('addcart');
+ Route::get('check','CartController@check')->name('check');
