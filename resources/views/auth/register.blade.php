@@ -39,7 +39,9 @@
                     <a href="{{route('password.request')}}">forgot my password</a>
                         <br><br>
                         <button type="submit" class="btn btn-primary btn-block"> Login with faceBook</button><br> 
-                        <button type="submit" class="btn btn-danger btn-block"> Login with Email</button>
+                        <a href="{{ url('/auth/redirect/google') }}" type="submit" class="btn btn-danger btn-block"> Login with Email</a>
+
+                        <a href=""></a>
 
                     </div>
 

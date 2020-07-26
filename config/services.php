@@ -30,4 +30,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+    'client_id' => '721553736348-c8tut5q3imd04rhg6pjtbjpigpdro0j6.apps.googleusercontent.com',
+    'client_secret' => 'xgwL8h2XAKU4uTcG8VB2TIQA',
+    'redirect' => 'http://localhost/myecommerce/multiauth/callback/google',
+    // 'redirect' => 'http://127.0.0.1:8000/callback/google',
+  ], 
+
+
 ];
