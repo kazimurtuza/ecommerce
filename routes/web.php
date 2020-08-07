@@ -38,7 +38,6 @@ Route::post('admin/store/category', 'Admin\Category\CategoryController@storeCate
 Route::get('delete/category/{id}', 'Admin\Category\CategoryController@DeleteCategory')->name('delete/category/');   
 Route::get('showedit/category/{id}', 'Admin\Category\CategoryController@showeditCategory');
 Route::post('update/category/{id}', 'Admin\Category\CategoryController@updateCategory');
-
 // brand.....................................
 Route::get('admin/brands', 'Admin\brand\BrandController@brand')->name('brands');  
 Route::post('admin/store/brand', 'Admin\brand\BrandController@storebrand')->name('store.brand');  
@@ -100,3 +99,16 @@ Route::get('wishlist','Admin\wishlist\WishlistController@wishadd')->name('wishli
 //addcard add
  Route::get('addcart','CartController@addcart')->name('addcart');
  Route::get('check','CartController@check')->name('check');
+
+//  cart product details see
+Route::get('see/product/details/{id}/{product_name}','productInfoController@productinfo');
+Route::post('cart/product/add/{id}','CartController@cartAdd');
+Route::get('cart/show','CartController@showCart')->name('cart.show');
+Route::get('delete/cart/item/{id}','CartController@deleteCartItem');
+Route::post('update/cart/item','CartController@updateCartItem')->name('update.cart');
+Route::get('addcart/details','CartController@Cartdetails')->name('details.addcart');
+Route::post('add/in/cart/','CartController@saveincart')->name('add.in.cart');
+Route::get('user/checkout','CartController@usercheckout')->name('user.checkout');
+Route::get('user/wishlistt','CartController@userwishlist')->name('user.wishlist');
+Route::post('coupon/apply','CartController@couponapply')->name('coupon.apply');
+Route::get('coupon/session/delete','CartController@deletecouponsession')->name('coupon.session.delete');

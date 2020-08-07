@@ -20,6 +20,8 @@
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/plugins/slick-1.8.0/slick.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_styles.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_responsive.css')}}">
 
     {{-- toastr --}}
      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
@@ -76,8 +78,8 @@
 									<li>
 										<a href="{{route('register')}}"><div class="user_icon"><img src="{{asset('public/frontend/images/user.svg')}}" alt=""></div>profile</a>
 										<ul>
-											<li><a href="#">Wishlist</a></li>
-											<li><a href="#">Checkout</a></li>
+											<li><a href="{{route('user.wishlist')}}">Wishlist</a></li>
+										<li><a href="{{route('user.checkout')}}">Checkout</a></li>
 											<li><a href="#">others</a></li>
 										</ul>
 									</li>
@@ -141,24 +143,33 @@
 					<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+							@guest
+
+							@else
 							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
 								<div class="wishlist_icon"><img src="{{asset('public/frontend/images/heart.png')}}" alt=""></div>
 								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="#">Wishlist</a></div>
-									<div class="wishlist_count">115</div>
+									@php
+								$list=DB::table('wishlists')->where('user_id',Auth::id())->get()
+									@endphp
+									<div class="wishlist_text"><a href="{{route('user.wishlist')}}">Wishlist</a></div>
+								<div class="wishlist_count">{{count($list)}}</div>
 								</div>
 							</div>
+								
+							@endguest
+							
 
 							<!-- Cart -->
 							<div class="cart">
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
 									<div class="cart_icon">
 										<img src="{{asset('public/frontend/images/cart.png')}}" alt="">
-										<div class="cart_count"><span>10</span></div>
+										<div class="cart_count"><span>{{Cart::count()}}</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="#">Cart</a></div>
-										<div class="cart_price">$85</div>
+									<div class="cart_text"><a href="{{route('cart.show')}}">Cart</a></div>
+									<div class="cart_price">{{Cart::Subtotal()}}</div>
 									</div>
 								</div>
 							</div>
@@ -291,6 +302,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{asset('public/frontend/plugins/easing/easing.js')}}"></script>
 <script src="{{asset('public/frontend/js/custom.js')}}"></script>
 
+
+<script src="{{asset('public/frontend/js/product_custom.js')}}"></script>
 
 
 

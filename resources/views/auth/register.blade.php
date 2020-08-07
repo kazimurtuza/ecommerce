@@ -38,7 +38,8 @@
                         </form><br>
                     <a href="{{route('password.request')}}">forgot my password</a>
                         <br><br>
-                        <button type="submit" class="btn btn-primary btn-block"> Login with faceBook</button><br> 
+                        <a href="{{ url('/auth/redirect/github') }}"type="submit" class="btn btn-primary btn-block"> Login with faceBook/github</a><br> 
+                        <a href="{{ url('/auth/redirect/facebook') }}"type="submit" class="btn btn-primary btn-block"> Login with faceBook</a><br> 
                         <a href="{{ url('/auth/redirect/google') }}" type="submit" class="btn btn-danger btn-block"> Login with Email</a>
 
                         <a href=""></a>

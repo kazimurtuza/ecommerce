@@ -37,5 +37,16 @@ return [
     // 'redirect' => 'http://127.0.0.1:8000/callback/google',
   ], 
 
+  'facebook' => [
+     'client_id' => '627103301253725',
+     'client_secret' => 'b9bcfde3969522dbde69965099b58a40',
+     'redirect' => 'http://localhost/myecommerce/multiauth/callback/facebook', 
+   ], 
+ 'github' => [
+    'client_id' => '410008830fa82bf33621',
+    'client_secret' => '5c2d6e7dd43728707ba0c40ed5991f0f224f3e74',
+    'redirect' => 'http://localhost/myecommerce/multiauth/callback/github',
+  ], 
+
 
 ];
