@@ -181,7 +181,7 @@
 												
 													@else 
 													<div class="product_price" style="padding:0px;margin-top:0px">{{$item->selling_price}} tk</div>
-												@endif
+												@endif 
 												<div class="product_name"><div><a href="{{url('see/product/details/'.$item->id.'/'.$item->product_name)}}">{{$item->product_name}}</a></div></div>
 														<div class="product_extras">
 														<button class="product_cart_button addtocard" data-id="{{$item->id}}"  data-toggle="modal"   data-target="#exampleModalCenter">Add to Cart</button>

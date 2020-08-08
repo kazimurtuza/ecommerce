@@ -72,6 +72,10 @@ Route::post('admin/store/product','Admin\product\ProductController@storeproduct'
 Route::get('admin/all/product','Admin\product\ProductController@allproduct')->name('all.product');
 Route::get('subcategorylistshow','Admin\product\ProductController@subcategorylistshow')->name('subcategorylistshow');
 
+// product show subcategory wise..............
+Route::get('productshow/bysubcata/{id}','productviewController@subcategorywiseShow'); 
+
+
 // product active inactive...............
 Route::get('inactive/product/{id}','Admin\product\ProductController@productInactive');
 Route::get('active/product/{id}','Admin\product\ProductController@productActive');

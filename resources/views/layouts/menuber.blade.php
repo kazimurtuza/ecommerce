@@ -26,8 +26,8 @@
 											@endphp
 											@foreach ($subcategory as $subcata)
 													<li >
-												<a href="#">{{$subcata->subcategory_name}}<i class="fas fa-chevron-right"></i></a>
-											</li>
+													<a href="{{url('productshow/bysubcata/'.$subcata->id)}}">{{$subcata->subcategory_name}}<i class="fas fa-chevron-right"></i></a>
+											</li>  
 												
 											@endforeach
 									

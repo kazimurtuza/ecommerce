@@ -23,9 +23,13 @@
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/styles/product_responsive.css')}}">
 
+
     {{-- toastr --}}
      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-     {{-- end toastr --}}
+	 {{-- end toastr --}}
+	 
+
+
 
 </head>
 
@@ -311,6 +315,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 <script src="{{asset('public/frontend/js/product_custom.js')}}"></script>
+
+
+
+
 
 
 
