@@ -93,6 +93,9 @@ Route::get('blog/allpost','PostController@blogAllpost')->name('blog.allpost');
 Route::get('Edit/post/{id}','PostController@Editpost');
 Route::get('delete/post/{id}','PostController@deletepost'); 
 Route::post('update/blog/post/{id}','PostController@updatepost'); 
+Route::get('blog/post/show','blogController@blogshow')->name('blog.post.show'); 
+Route::get('post/english','blogController@languageEnglish')->name('post.english'); 
+Route::get('post/bangla','blogController@languageBangla')->name('post.bangla'); 
 
 //wishlist add
 Route::get('wishlist','Admin\wishlist\WishlistController@wishadd')->name('wishlist');
@@ -112,3 +115,4 @@ Route::get('user/checkout','CartController@usercheckout')->name('user.checkout')
 Route::get('user/wishlistt','CartController@userwishlist')->name('user.wishlist');
 Route::post('coupon/apply','CartController@couponapply')->name('coupon.apply');
 Route::get('coupon/session/delete','CartController@deletecouponsession')->name('coupon.session.delete');
+

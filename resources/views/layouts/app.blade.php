@@ -48,29 +48,36 @@
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_menu">
 								<ul class="standard_dropdown top_bar_dropdown">
-									<li>
-										<a href="#">English<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="#">Italian</a></li>
-											<li><a href="#">Spanish</a></li>
-											<li><a href="#">Japanese</a></li>
-										</ul>
+									@if (session()->get('language')=='bangla')
+										
+										<li>
+										<a href="{{route('post.english')}}">English<i class="fas fa-chevron-down"></i></a>
+									 
 									</li>
-									<li>
-										<a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="#">EUR Euro</a></li>
-											<li><a href="#">GBP British Pound</a></li>
-											<li><a href="#">JPY Japanese Yen</a></li>
-										</ul>
+									  @else
+									  	<li>
+											<a href="{{route('post.bangla')}}">Bangla<i class="fas fa-chevron-down"></i></a>
+									
 									</li>
+								
+									@endif
+									
+								
+								
 								</ul>
 							</div>
 							<div class="top_bar_user">
 								{{-- <div class="user_icon"><img src="{{asset('public/frontend/images/user.svg')}}" alt=""></div> --}}
 
 								@guest
-                                    <div><a href="{{route('login')}}"><div class="user_icon"><img src="{{asset('public/frontend/images/user.svg')}}" alt=""></div>Signin/Register</a></div>
+								@if (session()->get('language')=='bangla')
+								   <div><a href="{{route('login')}}"><div class="user_icon"><img src="{{asset('public/frontend/images/user.svg')}}" alt=""></div>লগইন/রেজিস্টার</a></div>
+
+								@else
+								   <div><a href="{{route('login')}}"><div class="user_icon"><img src="{{asset('public/frontend/images/user.svg')}}" alt=""></div>Login/Register</a></div>
+									
+								@endif
+                                 
 								@else
 									
 							      <div class="top_bar_menu">
