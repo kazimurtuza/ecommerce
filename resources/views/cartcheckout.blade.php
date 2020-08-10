@@ -139,8 +139,11 @@
 								<div class="order_total_title">Total:</div>
 								<div class="order_total_amount">{{Cart::subtotal()}}</div>
                             </div>
-                            <br><br>
-
+							<br><br>
+						<a href="{{route('final.checkout')}}" class=" btn btn-success m-1" style=" float:right;">Final step</a>
+							<a href="" class=" btn btn-danger m-1" style=" float:right">Delete Cart</a>
+							
+							
                             </div>
 						
 					
@@ -156,10 +159,14 @@
 						
 						</div> --}}
 					</div>
+				
+							
 				</div>
+				
 			</div>
 		</div>
 	</div>
+		<br><br><hr><hr>
 
 <script src="{{asset('public/frontend/js/cart_custom.js')}}"></script>
 @endsection

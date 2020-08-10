@@ -120,3 +120,9 @@ Route::get('user/wishlistt','CartController@userwishlist')->name('user.wishlist'
 Route::post('coupon/apply','CartController@couponapply')->name('coupon.apply');
 Route::get('coupon/session/delete','CartController@deletecouponsession')->name('coupon.session.delete');
 
+// final checkout
+Route::get('final/checkout','CartController@finalcheckout')->name('final.checkout'); 
+
+// paymeent
+Route::post('user/paynow','paymentController@paynow')->name('paynow');
+Route::post('user/stripe/charge','paymentController@stripecharge')->name('stripe.charge');

@@ -274,6 +274,12 @@ class CartController extends Controller
                  );
                 return Redirect()->back()->with($notification);
        }
+
+       public function finalcheckout()
+       {
+         $cart=Cart::content();
+         return view('finalcheckout',['cart'=>$cart]);
+       }
      
     
     

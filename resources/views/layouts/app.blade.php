@@ -27,6 +27,9 @@
     {{-- toastr --}}
      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 	 {{-- end toastr --}}
+
+	 {{-- stripe link --}}
+	 <script src="https://js.stripe.com/v3/"></script>
 	 
 
 
@@ -223,7 +226,7 @@
 							</ul>
 						</div>
 					</div>
-				</div>
+				</div> 
 
 				<div class="col-lg-2 offset-lg-2">
 					<div class="footer_column">
