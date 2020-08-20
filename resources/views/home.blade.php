@@ -17,36 +17,28 @@
                        <th scope="col">Amount</th>
                        <th scope="col">Date</th>
                         <th scope="col">Status Code</th>
-                        <th scope="col">Status </th>
                         <th scope="col">Action</th>
                      </tr>
                    </thead>
                    <tbody>
-                    {{-- @foreach($order as $row) --}}
+                     @php
+                         $order=DB::table('orders')->where('user_id',Auth::user()->id)->orderBy('id','DESC')->get();
+                     @endphp
+                    @foreach($order as $row)
                      <tr>
-                       <th ></th>
-                       <td></td>
-                       <td> $</td>
-                       <td></td>
-                       <td>
-                       	{{-- @if($row->status == 0)
-                       	 <span class="badge badge-warning">Pending</span>
-                       	@elseif($row->status == 1)
-                       	<span class="badge badge-info">Payment Accept</span>
-                       	@elseif($row->status == 2) 
-                       	 <span class="badge badge-info">Progress </span>
-                       	 @elseif($row->status == 3)  
-                       	 <span class="badge badge-success">Delevered </span>
-                       	 @else
-                       	 <span class="badge badge-danger">Cancel </span>
-                       	 @endif --}}
-                       </td>
-                       <td></td>
+                     <th >{{$row->pay_type}}</th>
+                       <td>{{$row->payment_method}}</td>
+                       <td>{{$row->paying_amount}}</td>
+                       <td>{{$row->date}}</td>
+                       <td>{{$row->statuse_code}}</td>
+                     
+                 
+                      
                        <td>
                          <a href="#" class="btn btn-sm btn-info">View</a>
                        </td>
                      </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                    </tbody>
                  </table>
                </div>

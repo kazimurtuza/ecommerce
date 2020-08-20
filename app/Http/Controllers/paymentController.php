@@ -59,9 +59,10 @@ class paymentController extends Controller
 // Token is created using Checkout or Elements!
 // Get the payment token ID submitted by the form:
 $token = $_POST['stripeToken'];
+$amount=session::get('totalpay');
 
 $charge = \Stripe\Charge::create([
-  'amount' => 999*100,
+  'amount' =>$amount*100,
   'currency' => 'usd',
   'description' => 'kazis shop charge',
   'source' => $token,
@@ -74,15 +75,16 @@ $order['user_id']=Auth::user()->id;
 $order['payment_method']=$charge->payment_method;
 $order['bln_transection']=$charge->balance_transaction;
 $order['order_id']=$charge->metadata->order_id;
-$order['paying_amount']=$charge->amount;
+$order['pay_type']="stripe";
+$order['paying_amount']=$charge->amount/100;
 $order['shipping']=$extracharge->shipping;
 $order['vat']=$extracharge->vat;
-$order['total']=$charge->amount;
+$order['total']=$amount;
+$order['statuse_code']=rand(1000000,9999999);
 $order['statuse']='0';
 $order['date']=date('d-m-y');
 $order['month']=date('F');
 $order['year']=date('Y');
-$order['total']=$charge->amount;
 
 if(session::has('coupon'))
 {

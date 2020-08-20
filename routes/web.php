@@ -30,6 +30,41 @@ Route::get('admin/logout', 'AdminController@logout')->name('admin.logout');
 
 // admin section ...........................................................................
 
+//orders
+Route::get('admin/neworders','Admin\OrderController@neworders')->name('admin.neworders');
+Route::get('neworders/details/{id}','Admin\OrderController@neworderdetails');  
+Route::get('admin/payment/accept/{id}','Admin\OrderController@acceptpayment');
+Route::get('admin/order/cancel/{id}','Admin\OrderController@cancelorder');
+Route::get('admin/Delevery/Progress/{id}','Admin\OrderController@OrderProgress');
+Route::get('admin/Delevery/Done/{id}','Admin\OrderController@OrderDone');
+
+Route::get('admin/accept/payment/list','Admin\OrderController@acceptpaymentlist')->name('admin.accept.payment');
+Route::get('admin/progress/delevery','Admin\OrderController@progressdelevery')->name('admin.progress.delevery');
+Route::get('admin/Delevery/successt','Admin\OrderController@Deleverysuccess')->name('admin.Delevery.success');
+Route::get('admin/cancel/orders','Admin\OrderController@cancelorders')->name('admin.cancel.orders');
+
+// reports
+Route::get('admin/todayOrders','ReportController@todayOrders')->name('todayOrders');
+Route::get('admin/todaydelivery','ReportController@todaydelivery')->name('todaydelivered');
+Route::get('admin/thisMonthorders','ReportController@thisMonthorders')->name('thisMonthorders');
+Route::get('admin/thisMonthdelivery','ReportController@thisMonthdelivery')->name('thisMonthdelivery');
+Route::get('admin/ordersearch','ReportController@ordersearch')->name('ordersearch'); 
+
+//report search
+
+Route::post('admin/SrcOrderDatewise','ReportController@SrcOrderDatewise')->name('SrcOrderDatewise'); 
+Route::post('admin/SrcOrderMonthwise','ReportController@SrcOrderMonthwise')->name('SrcOrderMonthwise'); 
+Route::post('admin/SrcOrderYearwise','ReportController@SrcOrderYearwise')->name('SrcOrderYearwise'); 
+
+
+
+
+
+
+// Order tracking
+Route::post('user/trackingOrder','CartController@trackingOrder')->name('trackOrder');
+
+
 
 // category aprt...........................
 

@@ -94,37 +94,103 @@
 
         </div>
         
-            <div class="container cart_container p-5 bg-success" style=" border:solid black 2px;">
-                       
+       <div class="container cart_container p-5 bg-success" style=" border:solid black 2px;"> 
+                           @php
+									$shipping=DB::table('extracharges')->first();
+								@endphp
                         
-						<div class="cart_items ">
-                            	<ul class="cart_list">
-								<li class="cart_item clearfix float-right">
-                                    @if (Session::has('coupon'))
-                                    SubTotal : {{session::get('coupon')[0]['amount']}}
-                                    @else
-                                    SubTotal : {{cart::total()}}    
-                                    @endif
+						<div class="cart_items">
+                            	<ul class="cart_list text-center">
+								<li class="cart_item clearfix float-right text-center">
+
+                                    	@if ( Session::has('coupon'))
+								   		
+										SubTotal :    {{Session::get('coupon')[0]['amount']}} TK 
+    							
+
+								@else
+								   	
+								SubTotal : {{Cart::subtotal()}}
+							
+									
+								@endif
+                                   
                                     
                                 </li>
                                 <br>
-								<li class="cart_item clearfix float-right">
-                                     shipping  charge :200
+								<li class="cart_item clearfix float-right text-center">
+                                     shipping  charge :{{$shipping->shipping}}
                                 </li>
                                 <br>
 								<li class="cart_item clearfix float-right">
-                                     vat :200
+                                     vat :{{$shipping->vat}}
                                 </li>
                                 <br>
+                                	@php
+									$subtotal=str_replace(",", "",Cart::subtotal())
+								    
+								@endphp
 								<li class="cart_item clearfix float-right">
-                                          @if (Session::has('coupon'))
-                                    Total : {{session::get('coupon')[0]['amount']}}
-                                    @else
-                                    Total : {{cart::total()}}    
-                                    @endif
+                                    		@if ( Session::has('coupon'))
+								   		<div  class=" float-right">
+                                                  BD Total :	 {{Session::get('coupon')[0]['amount']+$shipping->shipping + $shipping->vat}} TK
+
+                                           </div>
+                                               @php
+                                            $total=(Session::get('coupon')[0]['amount']+$shipping->shipping + $shipping->vat)/84.7631
+
+                                        @endphp
+                                        @php
+                                             $totalamount=round($total,2)
+                                        @endphp
+						                                   	<hr>
+                                     <h5> USD Total :{{$totalamount}}$
+                                    
+
+                                         {{session::forget('totalpay')}}
+                                       
+                                         {{session::put('totalpay',$totalamount)}}
+                              </h5>             
+                              
+                             
+    							
+
+								@else
+								   		
+							<div  class=" float-right">
+                               BD Total : {{$subtotal+$shipping->shipping + $shipping->vat}} TK
+
+                              
+                            </div><hr>
+                            @php
+                                 $totalamount=($subtotal+$shipping->shipping + $shipping->vat)/84.7631
+                            @endphp
+                            
+                                @php
+                                    $data=round($totalamount, 2)
+                                @endphp
+
+                                      <h5> USD Totaldd :{{$data}}  <span style=" text:10px">$</span>
+
+                                        
+                                         {{session::forget('totalpay')}}
+                                       
+                                         {{session::put('totalpay',$data)}}
+                                        
+                              </h5>  
+							
+									
+								@endif
+
+
+
+                                    
                                     
                                 </li>
                                 </ul>
+
+
+                                
                             
                         </div>
 

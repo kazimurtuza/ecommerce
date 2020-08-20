@@ -280,6 +280,27 @@ class CartController extends Controller
          $cart=Cart::content();
          return view('finalcheckout',['cart'=>$cart]);
        }
+
+  //    --------------------tracking Order----------------------------------
+       public function trackingOrder(Request $request)  
+       {
+         $data=DB::table('orders')->where('statuse_code',$request->code)->first();
+         if($data)
+         {
+              //  return response()->json($data);
+               return view('trakingorder',['data'=>$data]);
+              
+         }
+         else{
+                $notification=array(
+                'messege'=>'traking code is invalid',
+                'alert-type'=>'error'
+                 );
+                return Redirect()->back()->with($notification);
+
+         }
+         
+       }
      
     
     

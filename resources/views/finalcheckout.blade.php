@@ -57,38 +57,97 @@
 						</div>
 
         </div>
-        
+                                @php
+									$shipping=DB::table('extracharges')->first();
+								@endphp
             <div class="container cart_container p-5 bg-success" style=" border:solid black 2px;">
                        
                         
-						<div class="cart_items ">
-                            	<ul class="cart_list">
-								<li class="cart_item clearfix float-right">
-                                    @if (Session::has('coupon'))
-                                    SubTotal : {{session::get('coupon')[0]['amount']}}
-                                    @else
-                                    SubTotal : {{cart::total()}}    
-                                    @endif
+						<div class="cart_items">
+                            	<ul class="cart_list text-center">
+								<li class="cart_item clearfix float-right text-center">
+
+                                    	@if ( Session::has('coupon'))
+								   		
+										SubTotal :    {{Session::get('coupon')[0]['amount']}} TK 
+    							
+
+								@else
+								   	
+								SubTotal : {{Cart::subtotal()}}
+							
+									
+								@endif
+                                   
                                     
                                 </li>
                                 <br>
-								<li class="cart_item clearfix float-right">
-                                     shipping  charge :200
+								<li class="cart_item clearfix float-right text-center">
+                                     shipping  charge :{{$shipping->shipping}}
                                 </li>
                                 <br>
 								<li class="cart_item clearfix float-right">
-                                     vat :200
+                                     vat :{{$shipping->vat}}
                                 </li>
                                 <br>
+                                	@php
+									$subtotal=str_replace(",", "",Cart::subtotal())
+								    
+								@endphp
 								<li class="cart_item clearfix float-right">
-                                          @if (Session::has('coupon'))
-                                    Total : {{session::get('coupon')[0]['amount']}}
-                                    @else
-                                    Total : {{cart::total()}}    
-                                    @endif
+                                    		@if ( Session::has('coupon'))
+								   		<div  class=" float-right">
+                                                  BD Total :	 {{Session::get('coupon')[0]['amount']+$shipping->shipping + $shipping->vat}} TK
+
+                                           </div>
+							<hr>
+                                     <h5> USD Total :{{(Session::get('coupon')[0]['amount']+$shipping->shipping + $shipping->vat)/84.7631}}$
+                                        @php
+                                            $totalamount=(Session::get('coupon')[0]['amount']+$shipping->shipping + $shipping->vat)/84.7631
+                                        @endphp
+
+                                         {{session::forget('totalpay')}}
+                                       
+                                         {{session::put('totalpay',$totalamount)}}
+                              </h5>             
+                              
+                             
+    							
+
+								@else
+								   		
+							<div  class=" float-right">
+                               BD Total : {{$subtotal+$shipping->shipping + $shipping->vat}} TK
+
+                              
+                            </div><hr>
+                            @php
+                                 $totalamount=($subtotal+$shipping->shipping + $shipping->vat)/84.7631
+                            @endphp
+                            
+                                
+
+                                      <h5> USD Total :{{$totalamount}} <span style=" text:10px">$</span>
+
+                                        
+                                         {{session::forget('totalpay')}}
+                                       
+                                         {{session::put('totalpay',$totalamount)}}
+                                        
+                              </h5>  
+							
+									
+								@endif
+
+
+
+                                    
                                     
                                 </li>
                                 </ul>
+
+
+                                
                             
                         </div>
 
@@ -128,24 +187,29 @@
             <hr><hr>
 
 
+            
+
+
             <h3>payment</h3><hr>
 
             <div class="logos ml-sm-auto">
 							<ul class="logos_list">
-								<li><input type="radio" name="payment" value="stripe" id=""> <a href="#"><img src="{{asset('public/frontend/images/logos_1.png')}}" alt=""></a></li>
-								<li><input type="radio" name="payment" value="ideal" id=""> <a href="#"><img src="{{asset('public/frontend/images/logo_4.png')}}" height="30px" alt=""></a></li>
-								<li><input type="radio" name="payment" value="paypal" id=""> <a href="#"><img src="{{asset('public/frontend/images/logos_3.png')}}" alt=""></a></li>
+								<li><input type="radio" name="payment" value="stripe" id="" required> <a href="#"><img src="{{asset('public/frontend/images/logos_1.png')}}" alt=""></a></li>
+								<li><input type="radio" name="payment" value="ideal" id="" required> <a href="#"><img src="{{asset('public/frontend/images/logo_4.png')}}" height="30px" alt=""></a></li>
+								<li><input type="radio" name="payment" value="paypal" id="" required> <a href="#"><img src="{{asset('public/frontend/images/logos_3.png')}}" alt=""></a></li>
 						
 						</div>
 
                           <br><br>
                         <button type="submit" class=" btn btn-success">paynow</button>
+                         
             </div>
 
            
         </div>
     
         </form>
+
 
          
     

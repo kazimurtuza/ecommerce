@@ -89,6 +89,8 @@
 									
 							      <div class="top_bar_menu">
 								<ul class="standard_dropdown top_bar_dropdown">
+
+										<li><a href=""  data-toggle="modal" data-target="#exampleModal"><div class="user_icon"></div>Tracking Order</a></li>
 									<li>
 										<a href="{{route('register')}}"><div class="user_icon"><img src="{{asset('public/frontend/images/user.svg')}}" alt=""></div>profile</a>
 										<ul>
@@ -97,6 +99,9 @@
 											<li><a href="#">others</a></li>
 										</ul>
 									</li>
+									
+
+								
 								</ul>
 							</div>
 									
@@ -227,6 +232,46 @@
 						</div>
 					</div>
 				</div> 
+
+
+				{{-------------------------- modal for Tracking ---------------------------------}}
+			
+               
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"                    aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Order tracking</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+					  <form action="{{route('trackOrder')}}" method="POST">
+						@csrf
+						   <div class=" form-group">
+							   <label for="">Traking code</label>
+							   <input type="text" class=" form-control" name="code" required> 
+
+						   </div>
+
+						   
+
+						<div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">check</button>
+                      </div>
+					   </form>
+                      </div>
+                  
+                    </div>
+                  </div>
+                </div>
+
+
+
+
 
 				<div class="col-lg-2 offset-lg-2">
 					<div class="footer_column">

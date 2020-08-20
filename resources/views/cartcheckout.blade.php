@@ -11,6 +11,7 @@
 				<div class="col-lg-10 offset-lg-1">
 					<div class="cart_container">
 						<div class="cart_title">Shopping Cart</div>
+					
 						<div class="cart_items">
 							<ul class="cart_list">
                                 @foreach ($cart as $item)
@@ -72,6 +73,9 @@
 						<!-- Order Total -->
 						<div class="order_total row">
                             <div class=" col-6">
+									@if (Cart::count()>0)
+							
+						
 								
 								@if (Session::has('coupon'))
 								<br><br> <br>
@@ -126,22 +130,56 @@
 							</div>
 									
 								@endif
+
+								@php
+									$shipping=DB::table('extracharges')->first();
+								@endphp
                              
 							<div class="order_total_content text-md-right">
 								<div class="order_total_title">shipping Charge:</div>
-								<div class="order_total_amount">{{Cart::subtotal()}}</div>
+								<div class="order_total_amount">{{$shipping->shipping}}</div>
 							</div>
 							<div class="order_total_content text-md-right">
 								<div class="order_total_title">vat:</div>
-								<div class="order_total_amount">{{Cart::subtotal()}}</div>
+								<div class="order_total_amount">{{$shipping->vat}}</div>
                             </div>
                             	<div class="order_total_content text-md-right">
 								<div class="order_total_title">Total:</div>
-								<div class="order_total_amount">{{Cart::subtotal()}}</div>
-                            </div>
+								<div class="order_total_amount">
+								@php
+									$subtotal=str_replace(",", "",Cart::subtotal())
+								    
+								@endphp
+
+								@if ( Session::has('coupon'))
+								   		<div class="order_total_content text-md-right">
+							
+										   <div class="order_total_amount">{{Session::get('coupon')[0]['amount']+$shipping->shipping + $shipping->vat}} TK </div>
+    							</div>
+
+								@else
+								   		<div class="order_total_content text-md-right">
+							
+								<div class="order_total_amount">{{$subtotal+$shipping->shipping + $shipping->vat}}</div>
+							</div>
+									
+								@endif
+								
+								</div>
+							</div>
+							
+							
 							<br><br>
 						<a href="{{route('final.checkout')}}" class=" btn btn-success m-1" style=" float:right;">Final step</a>
 							<a href="" class=" btn btn-danger m-1" style=" float:right">Delete Cart</a>
+
+							@else
+							<h1>No cart found here</h1>
+
+							
+
+
+							@endif
 							
 							
                             </div>
@@ -149,7 +187,8 @@
 					
 							
                         </div>
-                      <br><br><br><br><br><br><br>
+					  <br><br><br><br><br><br><br>
+					  
 				
                     
 
