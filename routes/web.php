@@ -30,6 +30,15 @@ Route::get('admin/logout', 'AdminController@logout')->name('admin.logout');
 
 // admin section ...........................................................................
 
+// -------------user add show------------------------------
+Route::get('admin/adduser', 'AdminController@adduser')->name('adduser');
+Route::post('admin/insertuser', 'AdminController@insertuser')->name('insertuser');
+Route::get('admin/allusers', 'AdminController@allusers')->name('allusers');
+Route::get('delete/user/{id}', 'AdminController@deleteuser');
+Route::get('Edit/user/{id}', 'AdminController@edituser');
+Route::post('updateuser/user', 'AdminController@updateuser')->name('updateuser');
+
+
 //orders
 Route::get('admin/neworders','Admin\OrderController@neworders')->name('admin.neworders');
 Route::get('neworders/details/{id}','Admin\OrderController@neworderdetails');  

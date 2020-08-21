@@ -59,7 +59,9 @@
             <span class="menu-item-label">Cards &amp; Widgets</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
-      <a href="}" class="sl-menu-link">
+  
+        @if (Auth::user()->category==1)
+      <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
             <span class="menu-item-label">Category</span>
@@ -72,6 +74,10 @@
         <li class="nav-item"><a href="{{route('brands')}}" class="nav-link">Brand</a></li>
        
         </ul>
+        @else
+        @endif
+
+        @if(Auth::user()->coupon==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
@@ -82,6 +88,10 @@
         <ul class="sl-menu-sub nav flex-column">
         <li class="nav-item"><a href="{{route('coupons')}}" class="nav-link">Coupon</a></li>
         </ul>
+        @else
+        @endif
+
+        @if(Auth::user()->order==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
           <i class="far fa-calendar-minus"></i>
@@ -96,10 +106,13 @@
           <li class="nav-item"><a href="{{route('admin.Delevery.success')}}" class="nav-link">Delevery success</a> 
           <li class="nav-item"><a href="{{route('admin.cancel.orders')}}" class="nav-link">cancel orders</a></li> 
         </ul>
+        @else
+        @endif
        
         
       
-      
+      @if (Auth::user()->other==1)
+          
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
@@ -110,6 +123,11 @@
         <ul class="sl-menu-sub nav flex-column">
         <li class="nav-item"><a href="{{route('newslater')}}" class="nav-link">newslater</a></li>
         </ul>
+         @else
+         @endif
+
+         @if (Auth::user()->product==1)
+
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-bookmarks-outline tx-20"></i>
@@ -121,6 +139,10 @@
         <li class="nav-item"><a href="{{route('add.product')}}" class="nav-link">add product</a></li>
           <li class="nav-item"><a href="{{route('all.product')}}" class="nav-link">all product</a></li>
         </ul>
+          @else           
+         @endif
+
+         @if (Auth::user()->blog==1)
                 <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="fa fa-th-large" aria-hidden="true"></i>
@@ -133,24 +155,10 @@
           <li class="nav-item"><a href="{{route('blog.post')}}" class="nav-link">Post</a></li>
           <li class="nav-item"><a href="{{route('blog.allpost')}}" class="nav-link">All Post</a></li>
         </ul>
+         @else
+         @endif
                 
-        {{-- <a href="#" class="sl-menu-link">
-          <div class="sl-menu-item">
-            <i class="menu-item-icon icon ion-ios-navigate-outline tx-24"></i>
-            <span class="menu-item-label">Maps</span>
-            <i class="menu-item-arrow fa fa-angle-down"></i>
-          </div><!-- menu-item -->
-        </a><!-- sl-menu-link -->
-        <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="map-google.html" class="nav-link">Google Maps</a></li>
-          <li class="nav-item"><a href="map-vector.html" class="nav-link">Vector Maps</a></li>
-        </ul> --}}
-       {{-- <a href="mailbox.html" class="sl-menu-link">
-          <div class="sl-menu-item">
-            <i class="menu-item-icon icon ion-ios-email-outline tx-24"></i>
-            <span class="menu-item-label">Mailbox</span>
-          </div><!-- menu-item -->
-        </a><!-- sl-menu-link --> --}}
+        @if (Auth::user()->report==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
@@ -166,7 +174,10 @@
           <li class="nav-item"><a href="{{route('ordersearch')}}" class="nav-link">Search</a></li>
           {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
         </ul>
-
+           @else
+         @endif
+        
+         @if(Auth::user()->user_role==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
@@ -175,13 +186,76 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link --> 
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{route('todayOrders')}}" class="nav-link">Today orders</a></li>
-          <li class="nav-item"><a href="{{route('todaydelivered')}}" class="nav-link">Today delivery</a></li>
-          <li class="nav-item"><a href="{{route('thisMonthorders')}}" class="nav-link">This Month orders</a></li>
-          <li class="nav-item"><a href="{{route('thisMonthdelivery')}}" class="nav-link">This Month delivery</a></li>
-          <li class="nav-item"><a href="{{route('ordersearch')}}" class="nav-link">Search</a></li>
+          <li class="nav-item"><a href="{{route('adduser')}}" class="nav-link">Add user</a></li>
+          <li class="nav-item"><a href="{{route('allusers')}}" class="nav-link">All user</a></li>
+     
           {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
         </ul>
+        @else
+        @endif
+
+        @if(Auth::user()->return_order==1)
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
+            <span class="menu-item-label">Return Order</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link --> 
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{route('todayOrders')}}" class="nav-link">Return order</a></li>
+
+          {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
+        </ul>
+        @else
+        @endif
+
+        @if (Auth::user()->contact==1)
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
+            <span class="menu-item-label">Contact Message</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link --> 
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{route('todayOrders')}}" class="nav-link">message</a></li>
+
+          {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
+        </ul>
+        @else
+        @endif
+
+        @if (Auth::user()->product_comment==1)
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
+            <span class="menu-item-label">Product Comment</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link --> 
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{route('todayOrders')}}" class="nav-link">comment</a></li>
+
+          {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
+        </ul>
+        @else
+        @endif
+        @if (Auth::user()->setting==1)
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
+            <span class="menu-item-label">Site settings</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link --> 
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{route('todayOrders')}}" class="nav-link">comment</a></li>
+
+          {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
+        </ul>
+          @else
+        @endif
      
       </div><!-- sl-sideleft-menu -->
 
