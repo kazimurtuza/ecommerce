@@ -209,6 +209,22 @@
         @else
         @endif
 
+        @if(Auth::user()->stock==1)
+        <a href="#" class="sl-menu-link">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
+            <span class="menu-item-label">Stock</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link --> 
+        <ul class="sl-menu-sub nav flex-column">
+      
+        <li class="nav-item"><a href="{{route('stock')}}" class="nav-link">product stock</a></li>
+        <li class="nav-item"><a href="{{route('Returngrantedlist')}}" class="nav-link">Return granted list</a></li>
+        </ul>
+        @else
+        @endif
+
         @if (Auth::user()->contact==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">

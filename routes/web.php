@@ -86,6 +86,9 @@ Route::post('admin/SrcOrderYearwise','ReportController@SrcOrderYearwise')->name(
 
 
 
+// Order stock
+Route::get('admin/stock','Admin\product\ProductController@stock')->name('stock');
+
 // Order tracking
 Route::post('user/trackingOrder','CartController@trackingOrder')->name('trackOrder');
 
@@ -133,7 +136,13 @@ Route::get('admin/all/product','Admin\product\ProductController@allproduct')->na
 Route::get('subcategorylistshow','Admin\product\ProductController@subcategorylistshow')->name('subcategorylistshow');
 
 // product show subcategory wise..............
-Route::get('productshow/bysubcata/{id}','productviewController@subcategorywiseShow'); 
+Route::get('productshow/bysubcata/{id}','productviewController@subcategorywiseShow');  
+
+
+
+// product search.............
+Route::post('search/product','productviewController@searchproduct')->name('searchproduct');  
+
 
 
 // product active inactive...............

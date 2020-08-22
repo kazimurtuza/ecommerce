@@ -57,6 +57,15 @@ public function OrderProgress($id)
 }
 public function OrderDone($id)
 {
+
+
+      $order=DB::table('orderdetails')->where('order_id',$id)->get();
+            foreach ( $order as $row ){
+              $order=DB::table('products')->where('id',$row->product_id)
+              ->update(['product_quantity'=>DB::raw('product_quantity -'.$row->qty)]);
+            };
+
+  
       DB::table('orders')->where('id',$id)->update(['statuse'=>3]);
               $notification=array(
                 'messege'=>'Order Done',

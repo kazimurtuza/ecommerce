@@ -110,27 +110,37 @@
 					<div class="">						
 							<ul class="nav nav-tabs" id="myTab" role="tablist">
 							  <li class="nav-item">
-							    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Product Details</a>
+							    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Product Review Or Comment box</a>
 							  </li>
 							  <li class="nav-item">
 							    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Video or Link</a>
 							  </li>
 							  <li class="nav-item">
-							    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Product Review Or Comment box</a>
+							    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Product Details</a>
 							  </li>
 							</ul><br>
 							<div class="tab-content" id="myTabContent">
 							  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-							  		{!! $product->product_details !!}
+								  <div class="fb-comments" data-href="{{ Request::url()}}" data-numposts="5" data-width=""></div>
+							  		
 							  </div>
 							  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 							  	 Product Videos : {!! $product->video_link !!}
 							  </div>
 							  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 
-							  	<div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="8"></div>
+								  {{-- <div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="8"></div> --}}
+								  {!! $product->product_details !!}
+							  
 
 							  </div>
+
+
+							
+							  
+							  
+
+
 							</div>
 					</div>
 				</div>
@@ -138,7 +148,9 @@
 		</div>
 	</div>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
+{{-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script> --}}
 <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5dff5c0e258810001231d9cc&product=inline-share-buttons&cms=sop' async='async'></script>
 
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=627103301253725&autoLogAppEvents=1" nonce="tgDUjHz3"></script>
 @endsection

@@ -36,7 +36,7 @@ class ProductController extends Controller
         return view('Admin/product/ajaxsubcategory',['data'=>$data]);
     }
 
-    public function storeproduct(Request $request)
+    public function storeproduct(Request $request) 
     {
 
         $product=array();
@@ -62,7 +62,7 @@ class ProductController extends Controller
 
         $image_one=$request->image_one;
     	$image_two=$request->image_two;
-    	$image_three=$request->image_three;
+    	$image_three=$request->image_three;   
 
     if($image_one && $image_two && $image_three){
             $image_one_name= hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
@@ -357,7 +357,13 @@ class ProductController extends Controller
                 return Redirect()->route('all.product')->with($notification);    
         }
     
+    }
 
+    public function stock()
+    {
+         $allproduct=DB::table('products')->join('categories','categories.id','=','products.category_id')
+       ->join('brands','brands.id','=','products.brand_id')->select('products.*','categories.category_name','brands.brand_name')->get();
+       return view('Admin/stock',['product'=>$allproduct]);
     }
 
  

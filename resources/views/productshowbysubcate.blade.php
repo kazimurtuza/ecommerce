@@ -62,7 +62,7 @@
 								<li class="color"><a href="#" style="background: #ffffff; border: solid 1px #e1e1e1;"></a></li>
 							</ul>
 						</div>
-						<div class="sidebar_section">
+						{{-- <div class="sidebar_section">
 							<div class="sidebar_subtitle brands_subtitle">Brands</div>
 							<ul class="brands_list">
 								@foreach($brands as $row)
@@ -72,18 +72,18 @@
 								<li class="brand"><a href="#">{{ $brand->brand_name}}</a></li>
 								@endforeach
 							</ul>
-						</div>
+						</div> --}}
 					</div>
 
 				</div>
 
-				<div class="col-lg-9">
+				<div class="col-lg-9"> 
 					
 					<!-- Shop Content -->
 
 					<div class="shop_content">
 						<div class="shop_bar clearfix">
-							<div class="shop_product_count"><span>186</span> products found</div>
+							
 							<div class="shop_sorting">
 								<span>Sort by:</span>
 								<ul>
@@ -163,7 +163,7 @@
 
 						<div class="shop_page_nav d-flex flex-row">
 							<div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>
-							  {{   $products->links() }}
+							  {{-- {{   $products->links() }} --}}
 							<div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
 						</div>
 
