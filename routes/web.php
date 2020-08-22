@@ -38,6 +38,12 @@ Route::get('delete/user/{id}', 'AdminController@deleteuser');
 Route::get('Edit/user/{id}', 'AdminController@edituser');
 Route::post('updateuser/user', 'AdminController@updateuser')->name('updateuser');
 
+// Company info settion
+
+Route::get('admin/CompanyInfoSetting', 'SitesettingController@CompanyInfoSetting')->name('CompanyInfoSetting');
+Route::post('admin/updateCopanyinfo', 'SitesettingController@updateCopanyinfo')->name('updateCopanyinfo');
+
+
 
 //orders
 Route::get('admin/neworders','Admin\OrderController@neworders')->name('admin.neworders');
@@ -51,6 +57,16 @@ Route::get('admin/accept/payment/list','Admin\OrderController@acceptpaymentlist'
 Route::get('admin/progress/delevery','Admin\OrderController@progressdelevery')->name('admin.progress.delevery');
 Route::get('admin/Delevery/successt','Admin\OrderController@Deleverysuccess')->name('admin.Delevery.success');
 Route::get('admin/cancel/orders','Admin\OrderController@cancelorders')->name('admin.cancel.orders');
+
+// ReturnOrder
+Route::get('user/ReturnOrder','ReturnOrderController@ReturnOrder')->name('ReturnOrder');
+Route::get('user/return/{id}','ReturnOrderController@ReturnOrdersend');
+
+Route::get('Admin/Returnlist','AdminController@Returnlist')->name('Returnlist');
+Route::get('Admin/Returngrantedlist','AdminController@Returngrantedlist')->name('Returngrantedlist');
+Route::get('admin/Returnaccept/{id}','AdminController@Returnaccept');
+
+
 
 // reports
 Route::get('admin/todayOrders','ReportController@todayOrders')->name('todayOrders');

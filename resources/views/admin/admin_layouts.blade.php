@@ -90,7 +90,6 @@
         </ul>
         @else
         @endif
-
         @if(Auth::user()->order==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -203,9 +202,9 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link --> 
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{route('todayOrders')}}" class="nav-link">Return order</a></li>
-
-          {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
+      
+        <li class="nav-item"><a href="{{route('Returnlist')}}" class="nav-link">Return list</a></li>
+        <li class="nav-item"><a href="{{route('Returngrantedlist')}}" class="nav-link">Return granted list</a></li>
         </ul>
         @else
         @endif
@@ -250,7 +249,7 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link --> 
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{route('todayOrders')}}" class="nav-link">comment</a></li>
+          <li class="nav-item"><a href="{{route('CompanyInfoSetting')}}" class="nav-link">company info set</a></li>
 
           {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
         </ul>

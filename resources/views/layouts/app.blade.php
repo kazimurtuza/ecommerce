@@ -37,6 +37,9 @@
 </head>
 
 <body>
+	@php
+		$company_info=DB::table('sitesettings')->first();
+	@endphp
 
 <div class="super_container">
 	
@@ -50,8 +53,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('public/frontend/images/phone.png')}}" alt=""></div>+38 068 005 3570</div>
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('public/frontend/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('public/frontend/images/phone.png')}}" alt=""></div>{{$company_info->phone_one}}</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('public/frontend/images/mail.png')}}" alt=""></div><a href="{{$company_info->company_Email}}">{{$company_info->company_Email}}</a></div>
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_menu">
 								<ul class="standard_dropdown top_bar_dropdown">
@@ -125,7 +128,7 @@
 					<!-- Logo -->
 					<div class="col-lg-2 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="{{url('/')}}">kazi'Shop</a></div>
+							<div class="logo"><a href="{{url('/')}}">{{$company_info->company_name}}</a></div>
 						</div>
 					</div>
 
@@ -206,6 +209,7 @@
 
 	<!-- Footer -->
 
+
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
@@ -213,19 +217,19 @@
 				<div class="col-lg-3 footer_col">
 					<div class="footer_column footer_contact">
 						<div class="logo_container">
-							<div class="logo"><a href="#">OneTech</a></div>
+						<div class="logo"><a href="#">{{$company_info->company_name}}</a></div>
 						</div>
 						<div class="footer_title">Got Question? Call Us 24/7</div>
-						<div class="footer_phone">+38 068 005 3570</div>
+						<div class="footer_phone">{{$company_info->phone_one}}</div>
 						<div class="footer_contact_text">
-							<p>17 Princess Road, London</p>
+							<p>{{$company_info->company_address}}</p>
 							<p>Grester London NW18JR, UK</p>
 						</div>
 						<div class="footer_social">
 							<ul>
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-youtube"></i></a></li>
+								<li><a href="{{$company_info->facebook_link}}"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="{{$company_info->twitter_link}}"><i class="fab fa-twitter"></i></a></li>
+								<li><a href="{{$company_info->youtube_link}}"><i class="fab fa-youtube"></i></a></li>
 								<li><a href="#"><i class="fab fa-google"></i></a></li>
 								<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
 							</ul>

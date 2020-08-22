@@ -8,56 +8,60 @@
     <div class="contact_form">
         <div class="container">
             <div class="row">
-               <div class="col-9 card">
+               <div class="col-8 card">
                  <table class="table table-response">
                    <thead>
                      <tr>
                        <th scope="col">PaymentType</th>
-                       <th scope="col">Payment ID</th>
+                       <th scope="col">Return position</th>
                        <th scope="col">Amount</th>
                        <th scope="col">Date</th>
-                       <th scope="col">position</th>
                         <th scope="col">Status Code</th>
                         <th scope="col">Action</th>
                      </tr>
                    </thead>
                    <tbody>
                      @php
-                         $order=DB::table('orders')->where('user_id',Auth::user()->id)->orderBy('id','DESC')->get();
+                         $order=DB::table('orders')->where('user_id',Auth::user()->id)->where('statuse',3)->orderBy('id','DESC')->get();
                      @endphp
                     @foreach($order as $row)
                      <tr>
                      <th >{{$row->pay_type}}</th>
-                       <td>{{$row->payment_method}}</td>
+                       <th>
+                           @if($row->returnorder==0)
+                            <p class=" badge badge-info">request is available</p>
+                           @else
+                           @endif
+                           @if($row->returnorder==1)
+                           <p class=" badge badge-info">pending</p>
+                           @else
+                           @endif
+                           @if($row->returnorder==2)
+                           <p class=" badge badge-success">return request accepded</p>
+                           @else
+                           @endif
+                     
+                    
+                    </th>
                        <td>{{$row->paying_amount}}</td>
                        <td>{{$row->date}}</td>
-                       <td>
-                                 @if ($row->statuse==0)
-              <p class=" badge badge-danger">panding</p> 
-                @elseif($row->statuse==1)
-                <p class=" badge badge-info">payment accepted</p> 
-                @elseif($row->statuse==2)
-                <p class=" badge badge-info">Delevery Progress</p> 
-                @elseif($row->statuse==3)
-                <p class=" badge badge-success">Delevery done</p> 
-                @elseif($row->statuse==4)
-                <p class=" badge badge-info"> invalied order</p> 
-                   @else
-               @endif
-                      </td>
                        <td>{{$row->statuse_code}}</td>
-                     
-                 
-                      
                        <td>
-                         <a href="#" class="btn btn-sm btn-info">View</a>
+                                 @if($row->returnorder==0)
+                              <a href="{{url('user/return/'.$row->id)}}" class="btn btn-sm btn-info">Return</a>
+                          @else
+                                  <p class=" badge badge-success">return request send successfully</p>
+                                 
+                          @endif
+                    
+                     
                        </td>
                      </tr>
                     @endforeach
                    </tbody>
                  </table>
                </div>
-               <div class="col-3">
+               <div class="col-4">
                  <div class="card" style="width: 18rem;">
                   <img src="" class="card-img-top" style="height: 90px; width: 90px; margin-left: 34%;" >
                   <div class="card-body">

@@ -168,4 +168,29 @@ class AdminController extends Controller
 
    }
 
+    public function Returnlist()
+    {
+       $data=DB::table('orders')->where('returnorder',1)->orderBy("id", "desc")->get();
+      return view('return.Returnlist',['data'=>$data]);
+
+    }
+    public function Returngrantedlist()
+    {
+       $data=DB::table('orders')->where('returnorder',2)->orderBy("id", "desc")->get();
+      return view('return.Returngrantedlist',['data'=>$data]);
+
+    }
+    public function Returnaccept($id)  
+    {
+       $data=DB::table('orders')->where('id',$id)->update(['returnorder'=>2]);
+  
+
+       $notification=array(
+                'messege'=> 'return request accept successfully',
+                'alert-type'=>'success'
+                 );
+               return Redirect()->back()->with($notification);
+
+    }
+
 }
