@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaysuccessEmial;
 use Cart;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Unique;
 use Session;
 
@@ -86,6 +88,8 @@ $order['date']=date('d-m-y');
 $order['month']=date('F');
 $order['year']=date('Y');
 
+
+
 if(session::has('coupon'))
 {
     $order['subtotal']=session::get('coupon')['0']['amount'];
@@ -105,6 +109,11 @@ $shipping['ship_email']=$request->email;
 $shipping['ship_address']=$request->address;
 $shipping['ship_city']=$request->city;
 DB::table('shippings')->insert($shipping);
+
+
+// payment success email
+
+Mail::to($request->email)->send(new PaysuccessEmial($order));
 
 $cartitem=cart::content(); 
 
