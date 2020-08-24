@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use File;
+use Illuminate\Support\Facades\Storage;
 
 class SitesettingController extends Controller
 {
@@ -39,4 +41,35 @@ class SitesettingController extends Controller
        
               
     }
+
+    public function DatabaseBackup()
+    {  
+   
+         return view('admin.databasebackup.Databasebackup',['files'=>File::allFiles('storage/app/Laravel')]);
+    }
+          public function DBbackupNow()
+          {
+              \Artisan::call('backup:run');
+                   $notification=array(
+                           'messege'=>'Database backup successfully Done',
+                           'alert-type'=>'success'
+                          );
+                      return Redirect()->back()->with($notification);
+
+          }
+          public function DBdownload($name){
+            $path= storage_path('app\Laravel/'.$name);
+            return response()->download($path);
+
+          }
+
+          public function DBdelete($name){
+              Storage::delete('Laravel/'.$name);
+                $notification=array(
+                           'messege'=>'Database backup successfully delete',
+                           'alert-type'=>'success'
+                          );
+                      return Redirect()->back()->with($notification);
+
+          }
 }

@@ -42,6 +42,11 @@ Route::post('updateuser/user', 'AdminController@updateuser')->name('updateuser')
 
 Route::get('admin/CompanyInfoSetting', 'SitesettingController@CompanyInfoSetting')->name('CompanyInfoSetting');
 Route::post('admin/updateCopanyinfo', 'SitesettingController@updateCopanyinfo')->name('updateCopanyinfo');
+//Database backup
+Route::get('admin/DatabaseBackup','SitesettingController@DatabaseBackup')->name('DatabaseBackup');
+Route::get('admin/backupNow','SitesettingController@DBbackupNow')->name('backupNow');
+Route::get('database/download/{name}','SitesettingController@DBdownload');
+Route::get('database/delete/{name}','SitesettingController@DBdelete'); 
 
 
 
@@ -195,3 +200,4 @@ Route::get('final/checkout','CartController@finalcheckout')->name('final.checkou
 // paymeent
 Route::post('user/paynow','paymentController@paynow')->name('paynow');
 Route::post('user/stripe/charge','paymentController@stripecharge')->name('stripe.charge');
+

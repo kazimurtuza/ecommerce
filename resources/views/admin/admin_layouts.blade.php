@@ -266,6 +266,7 @@
         </a><!-- sl-menu-link --> 
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{route('CompanyInfoSetting')}}" class="nav-link">company info set</a></li>
+          <li class="nav-item"><a href="{{route('DatabaseBackup')}}" class="nav-link">Database Backup</a></li>
 
           {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
         </ul>
