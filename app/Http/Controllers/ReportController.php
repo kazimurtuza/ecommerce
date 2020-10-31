@@ -15,26 +15,34 @@ class ReportController extends Controller
      public function  todayOrders(){
          $date=date('d-m-y');
      
-         $data=DB::table('orders')->where('date',$date)->where('statuse',0)->get();
-        return view('admin.userorders.neworderlist',['neworder'=>$data]);
+         $dataval=DB::table('orders')->where('date',$date)->get();
+         return view('admin.userorders.neworderlist',['neworder'=>$dataval]);  
+       
+
+       
+     
+
      }
      public function  todaydelivery(){
               $date=date('d-m-y');
      
-         $data=DB::table('orders')->where('date',$date)->where('statuse',3)->get();
-        return view('admin.userorders.neworderlist',['neworder'=>$data]);
+         $dataval=DB::table('orders')->where('date',$date)->where('statuse',3)->get();
+         return view('admin.userorders.neworderlist',['neworder'=>$dataval]);
+        
 
      }
      public function  thisMonthorders(){
          $month=date('F');
                $data=DB::table('orders')->where('month',$month)->get();
-        return view('admin.userorders.neworderlist',['neworder'=>$data]);
+         return view('admin.userorders.neworderlist',['neworder'=>$data]);
+  
 
      }
      public function  thisMonthdelivery(){
                 $month=date('F');
                $data=DB::table('orders')->where('month',$month)->where('statuse',3)->get();
         return view('admin.userorders.neworderlist',['neworder'=>$data]);
+
 
      }
      public function  ordersearch(){

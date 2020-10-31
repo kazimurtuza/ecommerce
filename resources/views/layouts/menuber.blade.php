@@ -46,7 +46,7 @@
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
+									{{-- <li><a href="#">Home<i class="fas fa-chevron-down"></i></a></li>
 									<li class="hassubs">
 										<a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
 										<ul>
@@ -90,7 +90,7 @@
 											<li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
 											<li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
-									</li>
+									</li> --}}
 								<li><a href="{{route('blog.post.show')}}">Blog<i class="fas fa-chevron-down"></i></a></li> 
 									<li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
 								</ul>
@@ -191,7 +191,7 @@
 							
 							<div class="menu_contact">
 								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:DailySell@gmail.com">DailySell@gmail.com</a></div>
 							</div>
 						</div>
 					</div>
@@ -208,7 +208,7 @@
 		
 	@endphp
 
-	<div class="banner">
+	{{-- <div class="banner">
 		<div class="banner_background" style="background:rgb(214 214 214 / 25%)"></div>
 		<div class="container fill_height">
 			<div class="row fill_height">
@@ -231,4 +231,4 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}

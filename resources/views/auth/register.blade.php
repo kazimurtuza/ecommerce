@@ -49,7 +49,7 @@
         </div>
         <div class=" col-lg-5 offset-lg-1 p-4" style=" border:solid 2px rgb(158, 156, 156)">
                <div class="contact_form_container">
-						<div class="contact_form_title">Sign Up</div>
+						<div class="contact_form_title">Register</div>
 
                <form action="{{route('register')}}" method="post" id="contact_form">
 						@csrf

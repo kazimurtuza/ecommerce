@@ -12,7 +12,7 @@
 
       <div class="sl-pagebody">
         <div class="sl-page-title">
-          <h5>New Orders</h5>
+          <h5>Orders  Report</h5>
        
         </div><!-- sl-page-title -->
 
@@ -48,7 +48,7 @@
                   <td>{{$row->subtotal}} Tk</td>
                   <td>{{$row->shipping}} Tk</td>
                   <td>{{$row->total}} $</td>
-                  <td>{{$row->date}} </td>
+                  <td>{{$row->created_at}} </td>
                @if ($row->statuse==0)
                 <td><h4 class=" badge badge-danger">panding</h4> </td>
                 @elseif($row->statuse==1)

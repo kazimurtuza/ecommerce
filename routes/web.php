@@ -13,7 +13,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/password-change', 'HomeController@changePassword')->name('password.change');
 Route::post('/password-update', 'HomeController@updatePassword')->name('password.update');
-Route::get('/user/logout', 'HomeController@Logout')->name('user.logout');
+Route::get('/user/logout', 'HomeController@Logout')->name('user.logout'); 
 
 //admin=======
 Route::get('admin/home','AdminController@index');
@@ -70,17 +70,17 @@ Route::get('user/return/{id}','ReturnOrderController@ReturnOrdersend');
 Route::get('Admin/Returnlist','AdminController@Returnlist')->name('Returnlist');
 Route::get('Admin/Returngrantedlist','AdminController@Returngrantedlist')->name('Returngrantedlist');
 Route::get('admin/Returnaccept/{id}','AdminController@Returnaccept');
-
+ 
 
 
 // reports
 Route::get('admin/todayOrders','ReportController@todayOrders')->name('todayOrders');
 Route::get('admin/todaydelivery','ReportController@todaydelivery')->name('todaydelivered');
 Route::get('admin/thisMonthorders','ReportController@thisMonthorders')->name('thisMonthorders');
-Route::get('admin/thisMonthdelivery','ReportController@thisMonthdelivery')->name('thisMonthdelivery');
+Route::get('admin/thisMonthdelivery','ReportController@thisMonthdelivery')->name ('thisMonthdelivery');
 Route::get('admin/ordersearch','ReportController@ordersearch')->name('ordersearch'); 
 
-//report search
+//report search update/category/
 
 Route::post('admin/SrcOrderDatewise','ReportController@SrcOrderDatewise')->name('SrcOrderDatewise'); 
 Route::post('admin/SrcOrderMonthwise','ReportController@SrcOrderMonthwise')->name('SrcOrderMonthwise'); 

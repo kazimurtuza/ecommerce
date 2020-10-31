@@ -36,7 +36,7 @@
     @else 
 
     <!-- ########## START: LEFT PANEL ########## -->
-    <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> starlight</a></div>
+    <div class="sl-logo"><a href=""><i class="icon ion-android-star-outline"></i> Daily Sell</a></div>
     <div class="sl-sideleft">
       {{-- <div class="input-group input-group-search">
         <input type="search" name="search" class="form-control" placeholder="Search">
@@ -224,7 +224,7 @@
         </ul>
         @else
         @endif
-
+{{-- 
         @if (Auth::user()->contact==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
@@ -236,12 +236,12 @@
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{route('todayOrders')}}" class="nav-link">message</a></li>
 
-          {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
+
         </ul>
         @else
-        @endif
+        @endif --}}
 
-        @if (Auth::user()->product_comment==1)
+        {{-- @if (Auth::user()->product_comment==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
             <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
@@ -252,10 +252,10 @@
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{route('todayOrders')}}" class="nav-link">comment</a></li>
 
-          {{-- <li class="nav-item"><a href="page-notfound.html" class="nav-link">404 Page Not Found</a></li> --}}
+       
         </ul>
         @else
-        @endif
+        @endif --}}
         @if (Auth::user()->setting==1)
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">
